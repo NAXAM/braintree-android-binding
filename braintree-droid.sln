@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BrainTree.Droid", "Naxam.BrainTree.Droid\Naxam.BrainTree.Droid.csproj", "{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

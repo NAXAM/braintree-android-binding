@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>Naxam.BrainTree.Droid</id>
+        <version>2.5.3</version>
+        <description>Xamarin Binding Library - BrainTree Android SDK</description>
+        <authors>Vu Duc Tuyen</authors>
+        <owners>NAXAM CO.,LTD</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <title>Naxam - BrainTree Android SDK</title>
+        <releaseNotes>BrainTree Android SDK v2.5.3</releaseNotes>
+        <summary>Xamarin Binding Library - BrainTree Android SDK</summary>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/NAXAM/xand-braintree-sdk</projectUrl>
+        <copyright>Copyright (c) 2017 NAXAM</copyright>
+        <tags>Xamarin.Android, braintree, sdk</tags>
+        <dependencies>
+            <dependency id="Naxam.BrainTree.Core" version="2.5.3" />
+            <dependency id="Naxam.Paypal.OneTouch" version="2.5.3" />
+        </dependencies>
+    </metadata>
+    <!-- Optional 'files' node -->
+    <files>
+        <file src="Naxam.BrainTree.Droid/bin/Release/Naxam.BrainTree.Droid.dll" target="lib/MonoAndroid10/Naxam.BrainTree.Droid.dll" />
+    </files>
+</package>
