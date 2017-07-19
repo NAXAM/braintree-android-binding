@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BrainTree.Droid", "Naxam.BrainTree.Droid\Naxam.BrainTree.Droid.csproj", "{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{BB3489F5-4681-47A8-96C0-7A75C8E125D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BraintreeQs", "demo\BraintreeQs\BraintreeQs.csproj", "{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +17,12 @@ Global
 		{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1F2B8B7-EFD9-4197-8183-A17F6D7ED25F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F} = {BB3489F5-4681-47A8-96C0-7A75C8E125D0}
 	EndGlobalSection
 EndGlobal
