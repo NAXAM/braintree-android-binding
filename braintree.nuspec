@@ -3,13 +3,13 @@
     <metadata>
         <!-- Required elements-->
         <id>Naxam.BrainTree.Droid</id>
-        <version>2.6.2</version>
+        <version>2.7.0</version>
         <description>Xamarin Binding Library - BrainTree Android SDK</description>
         <authors>NAXAM CO.,LTD</authors>
         <owners>NAXAM CO.,LTD</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>Naxam - BrainTree for Android</title>
-        <releaseNotes>BrainTree Android SDK v2.6.2</releaseNotes>
+        <releaseNotes>BrainTree Android SDK v2.7.0</releaseNotes>
         <summary>Xamarin Binding Library - BrainTree Android SDK</summary>
         <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
@@ -17,8 +17,8 @@
         <copyright>Copyright (c) 2017 NAXAM</copyright>
         <tags>Xamarin.Android, braintree, sdk</tags>
         <dependencies>
-            <dependency id="Naxam.BrainTree.Core" version="2.6.2" />
-            <dependency id="Naxam.Paypal.OneTouch" version="2.6.2" />
+            <dependency id="Naxam.BrainTree.Core" version="2.7.0" />
+            <dependency id="Naxam.Paypal.OneTouch" version="2.7.0" />
             <dependency id="Xamarin.GooglePlayServices.Wallet" version="42.1021.1" />
         </dependencies>
     </metadata>
