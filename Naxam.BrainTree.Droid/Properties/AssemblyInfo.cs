@@ -6,11 +6,11 @@ using Android.App;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Naxam.BrainTree.Droid")]
-[assembly: AssemblyDescription("Xamarin Binding Library - BrainTree Android SDK")]
+[assembly: AssemblyDescription("Xamarin.Android binding Library - BrainTree Android SDK")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NAXAM COMPANY LIMITED")]
 [assembly: AssemblyProduct("X Bindings")]
-[assembly: AssemblyCopyright("Copyright (c) 2017 NAXAM")]
+[assembly: AssemblyCopyright("Copyright (c) 2018 NAXAM")]
 [assembly: AssemblyTrademark("NAXAM")]
 [assembly: AssemblyCulture("")]
 
@@ -18,7 +18,7 @@ using Android.App;
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyVersion("2.7.0.1")]
+[assembly: AssemblyVersion("2.8.1")]
 
 // The following attributes are used to specify the signing key for the assembly, 
 // if desired. See the Mono documentation for more information about signing.

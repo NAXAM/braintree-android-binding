@@ -47,15 +47,6 @@
     <Reference Include="Naxam.BrainTree.BrowserSwitch.Droid">
       <HintPath>..\..\packages\Naxam.BrainTree.BrowserSwitch.Droid.0.1.4\lib\MonoAndroid10\Naxam.BrainTree.BrowserSwitch.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="Naxam.BrainTree.Core">
-      <HintPath>..\..\packages\Naxam.BrainTree.Core.2.7.0\lib\MonoAndroid10\Naxam.BrainTree.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Naxam.Paypal.DataCollector">
-      <HintPath>..\..\packages\Naxam.Paypal.DataCollector.2.7.0\lib\MonoAndroid10\Naxam.Paypal.DataCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Naxam.Paypal.OneTouch">
-      <HintPath>..\..\packages\Naxam.Paypal.OneTouch.2.7.0\lib\MonoAndroid10\Naxam.Paypal.OneTouch.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Android.Support.Annotations">
       <HintPath>..\..\packages\Xamarin.Android.Support.Annotations.26.1.0.1\lib\MonoAndroid80\Xamarin.Android.Support.Annotations.dll</HintPath>
     </Reference>
@@ -112,6 +103,15 @@
     </Reference>
     <Reference Include="Xamarin.GooglePlayServices.Wallet">
       <HintPath>..\..\packages\Xamarin.GooglePlayServices.Wallet.60.1142.0-beta2\lib\MonoAndroid80\Xamarin.GooglePlayServices.Wallet.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.BrainTree.Core">
+      <HintPath>..\..\packages\Naxam.BrainTree.Core.2.8.1\lib\MonoAndroid10\Naxam.BrainTree.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.Paypal.DataCollector">
+      <HintPath>..\..\packages\Naxam.Paypal.DataCollector.2.8.1\lib\MonoAndroid10\Naxam.Paypal.DataCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.Paypal.OneTouch">
+      <HintPath>..\..\packages\Naxam.Paypal.OneTouch.2.8.1\lib\MonoAndroid10\Naxam.Paypal.OneTouch.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
