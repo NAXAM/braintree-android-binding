@@ -17,9 +17,7 @@
         <copyright>Copyright (c) 2018 NAXAM</copyright>
         <tags>Xamarin.Android, braintree, sdk</tags>
         <dependencies>
-            <dependency id="Naxam.BrainTree.Core" version="2.8.1" />
-            <dependency id="Naxam.Paypal.OneTouch" version="2.8.1" />
-            <dependency id="Xamarin.GooglePlayServices.Wallet" version="60.1142.0-beta2" />
+            <dependency id="Xamarin.GooglePlayServices.Wallet" version="60.1142.0" />
         </dependencies>
     </metadata>
     <!-- Optional 'files' node -->
