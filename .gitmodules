@@ -1,0 +1,9 @@
+[submodule "paypal-onetouch"]
+	path = paypal-onetouch
+	url = https://github.com/NAXAM/paypal-onetouch-android-binding
+[submodule "paypal-datacollector"]
+	path = paypal-datacollector
+	url = https://github.com/NAXAM/paypal-datacollector-android-binding
+[submodule "braintree-core"]
+	path = braintree-core
+	url = https://github.com/NAXAM/braintree-core-android-binding
