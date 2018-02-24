@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{BB3489F5-4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BraintreeQs", "demo\BraintreeQs\BraintreeQs.csproj", "{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.BraintreeDataCollector.Droid", "Naxam.BraintreeDataCollector.Droid\Naxam.BraintreeDataCollector.Droid.csproj", "{A783D0DB-85D2-479D-8ED8-A0349D01A581}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A783D0DB-85D2-479D-8ED8-A0349D01A581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A783D0DB-85D2-479D-8ED8-A0349D01A581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A783D0DB-85D2-479D-8ED8-A0349D01A581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A783D0DB-85D2-479D-8ED8-A0349D01A581}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

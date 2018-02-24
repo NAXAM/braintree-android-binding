@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <!-- Required elements-->
+        <id>Naxam.BraintreeDataCollector.Droid</id>
+        <version>2.8.1</version>
+        <description>Xamarin.Android binding Library - BrainTree - DataCollector</description>
+        <authors>NAXAM CO.,LTD</authors>
+        <owners>NAXAM CO.,LTD</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <title>Naxam - BrainTree DataCollector for Android</title>
+        <releaseNotes>Braintree 2.8.1</releaseNotes>
+        <summary>Xamarin Binding Library - BrainTree Android SDK</summary>
+        <iconUrl>https://avatars3.githubusercontent.com/u/3453</iconUrl>
+        <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/NAXAM/braintree-android-binding</projectUrl>
+        <copyright>Copyright (c) 2018 NAXAM</copyright>
+        <tags>Xamarin.Android, braintree, datacollector, data-collector, braintreedatacollector</tags>
+        <dependencies>
+            <!-- <dependency id="Xamarin.GooglePlayServices.Wallet" version="60.1142.0" /> -->
+        </dependencies>
+    </metadata>
+    <!-- Optional 'files' node -->
+    <files>
+        <file src="Naxam.BraintreeDataCollector.Droid/bin/Release/Naxam.BraintreeDataCollector.Droid.dll" target="lib/MonoAndroid10/Naxam.BraintreeDataCollector.Droid.dll" />
+    </files>
+</package>

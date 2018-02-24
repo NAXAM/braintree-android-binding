@@ -11,20 +11,26 @@ var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
 var VERSION = "2.10.0";
-var NUGET_SUFIX = ".1";
+var NUGET_SUFIX = "";
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
 //////////////////////////////////////////////////////////////////////
 
+var solutionPath = "./braintree-droid.sln";
 var artifacts = new [] {
     new Artifact {
-        SolutionPath = "./braintree-droid.sln",
-        AssemblyInfoPath = "./Naxam.BrainTree.Droid/Properties/AssemblyInfo.cs",
-        NuspecPath = "./braintree.nuspec",
-        DownloadUrl = "http://central.maven.org/maven2/com/braintreepayments/api/braintree/{0}/braintree-{0}.aar",
-        JarPath = "./Naxam.BrainTree.Droid/Jars/braintree.aar"
-    }
+        AssemblyInfoPath = "./Naxam.BraintreeDataCollector.Droid/Properties/AssemblyInfo.cs",
+        NuspecPath = "./braintree-datacollector.nuspec",
+        DownloadUrl = "http://central.maven.org/maven2/com/braintreepayments/api/data-collector/{0}/data-collector-{0}.jar",
+        JarPath = "./Naxam.BraintreeDataCollector.Droid/Jars/data-collector.jar"
+    },
+    // new Artifact {
+    //     AssemblyInfoPath = "./Naxam.BrainTree.Droid/Properties/AssemblyInfo.cs",
+    //     NuspecPath = "./braintree.nuspec",
+    //     DownloadUrl = "http://central.maven.org/maven2/com/braintreepayments/api/braintree/{0}/braintree-{0}.aar",
+    //     JarPath = "./Naxam.BrainTree.Droid/Jars/braintree.aar"
+    // }
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -59,16 +65,7 @@ Task("Restore-NuGet-Packages")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    foreach(var artifact in artifacts) {
-        NuGetRestore(artifact.SolutionPath);
-    }
-    foreach(var artifact in artifacts) {
-        NuGetUpdate(artifact.SolutionPath, new NuGetUpdateSettings {
-            Id = new [] {
-                "Naxam.Paypal.OneTouch"
-            }, 
-        });
-    }
+    NuGetRestore(solutionPath);
 });
 
 Task("Build")
@@ -76,9 +73,7 @@ Task("Build")
     .IsDependentOn("Restore-NuGet-Packages")
     .Does(() =>
 {
-    foreach(var artifact in artifacts) {
-        MSBuild(artifact.SolutionPath, settings => settings.SetConfiguration(configuration));
-    }
+    MSBuild(solutionPath, settings => settings.SetConfiguration(configuration));
 });
 
 Task("UpdateVersion")
@@ -97,22 +92,22 @@ Task("Pack")
     foreach(var artifact in artifacts) {
         NuGetPack(artifact.NuspecPath, new NuGetPackSettings {
             Version = VERSION+NUGET_SUFIX,
-            Dependencies = new []{
-                new NuSpecDependency {
-                    Id = "Naxam.BrainTree.Core",
-                    Version = VERSION+NUGET_SUFIX
-                },
-                new NuSpecDependency {
-                    Id = "Naxam.Paypal.OneTouch",
-                    Version = VERSION+NUGET_SUFIX
-                },
-                new NuSpecDependency {
-                    Id = "Xamarin.GooglePlayServices.Wallet",
-                    Version = "60.1142.0"
-                }
-            },
+            // Dependencies = new []{
+            //     new NuSpecDependency {
+            //         Id = "Naxam.BrainTree.Core",
+            //         Version = VERSION+NUGET_SUFIX
+            //     },
+            //     new NuSpecDependency {
+            //         Id = "Naxam.Paypal.OneTouch",
+            //         Version = VERSION+NUGET_SUFIX
+            //     },
+            //     new NuSpecDependency {
+            //         Id = "Xamarin.GooglePlayServices.Wallet",
+            //         Version = "60.1142.0"
+            //     }
+            // }, TODO
             ReleaseNotes = new [] {
-                $"Braintree SDK v{VERSION}"
+                $"Braintree SDK - DataCollector v{VERSION}"
             }
         });
     }
