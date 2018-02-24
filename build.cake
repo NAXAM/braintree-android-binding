@@ -11,6 +11,7 @@ var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
 var VERSION = "2.10.0";
+var NUGET_SUFIX = ".1";
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
@@ -95,16 +96,23 @@ Task("Pack")
 {
     foreach(var artifact in artifacts) {
         NuGetPack(artifact.NuspecPath, new NuGetPackSettings {
-            Version = VERSION,
+            Version = VERSION+NUGET_SUFIX,
             Dependencies = new []{
                 new NuSpecDependency {
                     Id = "Naxam.BrainTree.Core",
-                    Version = VERSION
+                    Version = VERSION+NUGET_SUFIX
                 },
                 new NuSpecDependency {
                     Id = "Naxam.Paypal.OneTouch",
-                    Version = VERSION
+                    Version = VERSION+NUGET_SUFIX
+                },
+                new NuSpecDependency {
+                    Id = "Xamarin.GooglePlayServices.Wallet",
+                    Version = "60.1142.0"
                 }
+            },
+            ReleaseNotes = new [] {
+                $"Braintree SDK v{VERSION}"
             }
         });
     }

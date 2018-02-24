@@ -1,14 +1,25 @@
 # PayPal DataCollector
-sh ./paypal-datacollector/build.sh
+echo "PayPal DataCollector"
+cd ./paypal-datacollector
+sh ./build.sh
+cd ../
 cp -p ./paypal-datacollector/*.nupkg ./nugets/
 
-# PayPal DataCollector
-sh ./braintree-core/build.sh
+# Braintree Core
+echo "Braintree Core"
+cd ./braintree-core
+sh ./build.sh
+cd ../
 cp -p ./braintree-core/*.nupkg ./nugets/
 
-# PayPal DataCollector
-sh ./paypal-onetouch/build.sh
+# PayPal OneTouch
+echo "PayPal OneTouch"
+cd ./paypal-onetouch
+sh ./build.sh
+cd ../
 cp -p ./paypal-onetouch/*.nupkg ./nugets/
 
+# PayPal BrainTree
+echo "BrainTree"
 sh ./build.sh
 cp -p ./*.nupkg ./nugets/
