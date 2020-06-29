@@ -1,0 +1,25 @@
+<Project>
+  <ItemGroup>
+    <PackageReference Update="Naxam.Braintree.Droid" Version="3.11.0" />
+    <PackageReference Update="Naxam.BraintreeGooglePayment.Droid" Version="3.3.1" />
+    <PackageReference Update="Naxam.BrainTree.Core" Version="3.11.0" />
+    <PackageReference Update="Naxam.BrainTree.BrowserSwitch.Droid" Version="0.2.0" />
+    <PackageReference Update="Naxam.Paypal.OneTouch" Version="3.11.0" />
+    <PackageReference Update="Naxam.Paypal.DataCollector" Version="3.11.0" />
+    <PackageReference Update="Xamarin.GooglePlayServices.Wallet" Version="71.1600.1" />
+    <PackageReference Update="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.v7.RecyclerView" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Support.CustomTabs" Version="28.0.0.3" />
+    <PackageReference Update="Xamarin.Android.Arch.Core.Common" Version="1.1.1.3" />
+    <PackageReference Update="Xamarin.Android.Arch.Core.Runtime" Version="1.1.1.3" />
+    <PackageReference Update="Xamarin.Android.Arch.Lifecycle.Common" Version="1.1.1.3" />
+    <PackageReference Update="Xamarin.Android.Arch.Lifecycle.Runtime" Version="1.1.1.3" />
+    <PackageReference Update="Xamarin.Google.AutoValue.Annotations" Version="1.6.5" />
+    <PackageReference Update="Xamarin.Google.AutoValue.Annotations" Version="1.6.5" />
+    <PackageReference Update="Xamarin.AndroidX.AppCompat" Version="1.1.0.1" />
+    <PackageReference Update="Xamarin.AndroidX.Fragment" Version="1.1.0.1" />
+    <PackageReference Update="Xamarin.AndroidX.Annotation" Version="1.1.0.1" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<attr path="/api/package[@name='com.braintreepayments.api']/class[@name='BraintreeFragment']/field[@name='TAG']" name="managedName">TAG</attr>
+
+	<remove-node  path="/api/package[@name='com.braintreepayments.api.interfaces']/interface[@name='TokenizationParametersListener']" />
+	<add-node path="/api/package[@name='com.braintreepayments.api.interfaces']">
+		<interface abstract="true" deprecated="not deprecated" final="false" name="TokenizationParametersListener" static="false" visibility="public" jni-signature="Lcom/braintreepayments/api/interfaces/TokenizationParametersListener;">
+			<method abstract="true" deprecated="not deprecated" final="false" name="onResult" jni-signature="(Lcom/google/android/gms/wallet/PaymentMethodTokenizationParameters;Ljava/util/Collection;)V" bridge="false" native="false" return="void" jni-return="V" static="false" synchronized="false" synthetic="false" visibility="public">
+				<parameter name="p0" type="com.google.android.gms.wallet.PaymentMethodTokenizationParameters" jni-type="Lcom/google/android/gms/wallet/PaymentMethodTokenizationParameters;">
+				</parameter>
+				<parameter name="p1" type="java.util.Collection&lt;java.lang.Integer&gt;" jni-type="Ljava/util/Collection&lt;Ljava/lang/Integer;&gt;;">
+				</parameter>
+			</method>
+		</interface>
+	</add-node>
+</metadata>

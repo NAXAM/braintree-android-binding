@@ -41,3 +41,9 @@ Thumbs.db
 
 # dotCover
 *.dotCover
+
+externals/
+generated/
+output/
+binderator
+models.json

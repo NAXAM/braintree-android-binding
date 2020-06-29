@@ -1,3 +1,9 @@
+Naxam is not responsible for, nor does it grant any licenses to, third-party packages. Some packages may require or install dependencies which are governed by additional licenses.
+
+This component depends on Braintree Payments SDK for Android, which is subject to the terms of Braintree Payments Software Development Kit License Agreement
+
+Xamarin.Android binding library for Braintree Payments SDK for Android
+
 MIT License
 
 Copyright (c) 2018 NAXAM CO., LTD
@@ -19,3 +25,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+20170608

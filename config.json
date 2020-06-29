@@ -1,0 +1,191 @@
+[{
+	"mavenRepositoryType" : "MavenCentral",
+	"slnFile" : "generated/braintree-android.sln",
+	"debug": { "DumpModels" : true },
+	"additionalProjects": [
+	],
+	"templates" : [
+		{
+			"templateFile": "source/BraintreePaymentsTargets.cshtml",
+			"outputFileRule" : "generated/{groupid}.{artifactid}/{nugetid}.targets"
+		},
+		{
+			"templateFile": "source/BraintreePaymentsProject.cshtml",
+			"outputFileRule" : "generated/{groupid}.{artifactid}/{groupid}.{artifactid}.csproj"
+		},
+		{
+			"templateFile": "source/BraintreePaymentsPom.cshtml",
+			"outputFileRule" : "generated/{groupid}.{artifactid}/pom.xml"
+		}
+	],
+	"artifacts" : [
+		{
+			"groupId" : "com.braintreepayments.api",
+			"artifactId" : "braintree",
+			"version" : "3.11.0",
+			"nugetVersion" : "3.11.0",
+			"nugetId" : "Naxam.Braintree.Droid",
+			"dependencyOnly" : false
+		},
+		{
+			"groupId" : "com.braintreepayments.api",
+			"artifactId" : "google-payment",
+			"version" : "3.3.1",
+			"nugetVersion" : "3.3.1",
+			"nugetId" : "Naxam.BraintreeGooglePayment.Droid",
+			"dependencyOnly" : false
+		},
+		{
+			"groupId" : "com.braintreepayments.api",
+			"artifactId" : "core",
+			"version" : "3.11.0",
+			"nugetVersion" : "3.11.0",
+			"nugetId" : "Naxam.BrainTree.Core",
+			"dependencyOnly" : false
+		},
+		{
+			"groupId" : "com.braintreepayments",
+			"artifactId" : "browser-switch",
+			"version" : "0.2.0",
+			"nugetVersion" : "0.2.0",
+			"nugetId" : "Naxam.BrainTree.BrowserSwitch.Droid",
+			"dependencyOnly" : false
+		},
+		{
+			"groupId" : "com.paypal.android.sdk",
+			"artifactId" : "paypal-one-touch",
+			"version" : "3.11.0",
+			"nugetVersion" : "3.11.0",
+			"nugetId" : "Naxam.Paypal.OneTouch",
+			"dependencyOnly" : false
+		},
+		{
+			"groupId" : "com.paypal.android.sdk",
+			"artifactId" : "data-collector",
+			"version" : "3.11.0",
+			"nugetVersion" : "3.11.0",
+			"nugetId" : "Naxam.Paypal.DataCollector",
+			"dependencyOnly" : false
+		},
+		{
+			"groupId" : "com.google.android.gms",
+			"artifactId" : "play-services-wallet",
+			"version" : "16.0.0",
+			"nugetVersion" : "71.1600.1",
+			"nugetId" : "Xamarin.GooglePlayServices.Wallet",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.android.support",
+			"artifactId" : "support-v4",
+			"version" : "28.0.0",
+			"nugetVersion" : "28.0.0.3",
+			"nugetId" : "Xamarin.Android.Support.v4",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.android.support",
+			"artifactId" : "mediarouter-v7",
+			"version" : "28.0.0",
+			"nugetVersion" : "28.0.0.3",
+			"nugetId" : "Xamarin.Android.Support.v7.MediaRouter",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.android.support",
+			"artifactId" : "recyclerview-v7",
+			"version" : "28.0.0",
+			"nugetVersion" : "28.0.0.3",
+			"nugetId" : "Xamarin.Android.Support.v7.RecyclerView",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.android.support",
+			"artifactId" : "appcompat-v7",
+			"version" : "28.0.0",
+			"nugetVersion" : "28.0.0.3",
+			"nugetId" : "Xamarin.Android.Support.v7.AppCompat",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.android.support",
+			"artifactId" : "customtabs",
+			"version": "28.0.0",
+			"nugetVersion" : "28.0.0.3",
+			"nugetId" : "Xamarin.Android.Support.CustomTabs",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "android.arch.core",
+			"artifactId" : "common",
+			"version" : "1.1.1",
+			"nugetVersion" : "1.1.1.3",
+			"nugetId" : "Xamarin.Android.Arch.Core.Common",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "android.arch.core",
+			"artifactId" : "runtime",
+			"version" : "1.1.1",
+			"nugetVersion" : "1.1.1.3",
+			"nugetId" : "Xamarin.Android.Arch.Core.Runtime",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "android.arch.lifecycle",
+			"artifactId" : "common",
+			"version" : "1.1.1",
+			"nugetVersion" : "1.1.1.3",
+			"nugetId" : "Xamarin.Android.Arch.Lifecycle.Common",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "android.arch.lifecycle",
+			"artifactId" : "runtime",
+			"version" : "1.1.1",
+			"nugetVersion" : "1.1.1.3",
+			"nugetId" : "Xamarin.Android.Arch.Lifecycle.Runtime",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.google.auto.value",
+			"artifactId" : "auto-value-annotations",
+			"version" : "1.6.5",
+			"nugetVersion" : "1.6.5",
+			"nugetId" : "Xamarin.Google.AutoValue.Annotations",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.google.auto.value",
+			"artifactId" : "auto-value-annotations",
+			"version" : "1.6.5",
+			"nugetVersion" : "1.6.5",
+			"nugetId" : "Xamarin.Google.AutoValue.Annotations",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "androidx.appcompat",
+			"artifactId" : "appcompat",
+			"version" : "1.1.0",
+			"nugetVersion" : "1.1.0.1",
+			"nugetId" : "Xamarin.AndroidX.AppCompat",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "androidx.fragment",
+			"artifactId" : "fragment",
+			"version" : "1.1.0",
+			"nugetVersion" : "1.1.0.1",
+			"nugetId" : "Xamarin.AndroidX.Fragment",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "androidx.annotation",
+			"artifactId" : "annotation",
+			"version" : "1.1.0",
+			"nugetVersion" : "1.1.0.1",
+			"nugetId" : "Xamarin.AndroidX.Annotation",
+			"dependencyOnly" : true
+		}
+	]
+}]

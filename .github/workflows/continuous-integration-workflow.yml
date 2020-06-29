@@ -1,0 +1,21 @@
+name: Publish to Nuget.org
+# This workflow is triggered on pushes to the repository.
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    # Job name is Greeting
+    name: Publish
+    # This job runs on Linux
+    runs-on: windows-latest
+    steps:
+      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
+      - name: Checkout
+        uses: actions/checkout@v2
+        id: checkout
+      # This step prints an output (time) from the previous step's action.
+      - name: Echo checkout time
+        run: echo 'The time was ${{ steps.checkout.outputs.time }}.'

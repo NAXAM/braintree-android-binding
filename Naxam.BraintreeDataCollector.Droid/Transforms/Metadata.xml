@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<metadata>
-	  <attr
-        path="/api/package[@name='com.kount.api']/class[@name='CollectorTaskBase']"
-        name="visibility">public</attr>
-    <attr
-        path="/api/package[@name='com.kount.api']/class[@name='LocationCollector']"
-        name="visibility">public</attr>
-</metadata>
