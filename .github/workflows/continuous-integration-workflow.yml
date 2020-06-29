@@ -16,9 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         id: checkout
-      # This step prints an output (time) from the previous step's action.
-    #   - name: Add msbuild to PATH
-    #     uses: microsoft/setup-msbuild@v1.0.0
       - name: Install Cake-Tool
         run: dotnet tool install -g Cake.Tool
         id: cake-tool
@@ -26,7 +23,9 @@ jobs:
         run: dotnet tool install -g Xamarin.AndroidBinderator.Tool
         id: xamarin-androidbinderator-tool
       - name: Run Cake script
-        uses: cake-build/cake-action@v1
-        id: cakeAction
-        with:
-          verbosity: Diagnostic
+        run: dotnet cake
+        id: dotnet-cake
+      - name: Publish
+        run: dotnet nuget push **/*.nupkg
+             --api-key ${{secrets.NUGET_DEPLOY_KEY}}
+             --source https://api.nuget.org/v3/index.json
