@@ -26,6 +26,6 @@ jobs:
         run: dotnet cake
         id: dotnet-cake
       - name: Publish
-        run: dotnet nuget push **/*.nupkg
+        run: dotnet nuget push ./output/*.nupkg
              --api-key ${{secrets.NUGET_DEPLOY_KEY}}
              --source https://api.nuget.org/v3/index.json
