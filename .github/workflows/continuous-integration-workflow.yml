@@ -19,6 +19,16 @@ jobs:
       # This step prints an output (time) from the previous step's action.
     #   - name: Add msbuild to PATH
     #     uses: microsoft/setup-msbuild@v1.0.0
+      - name: Install Cake-Tool
+        run: dotnet tool install -g Cake.Tool
+        id: cake-tool
+        with:
+          verbosity: Diagnostic
+      - name: Install Xamarin.AndroidBinderator.Tool
+        run: dotnet tool install -g Xamarin.AndroidBinderator.Tool
+        id: xamarin-androidbinderator-tool
+        with:
+          verbosity: Diagnostic
       - name: Run Cake script
         uses: cake-build/cake-action@v1
         id: cakeAction
