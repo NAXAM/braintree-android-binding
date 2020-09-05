@@ -30,7 +30,7 @@ namespace BraintreeQs
             button.Text = "Show Drop In";
 
             button.Click += delegate {
-                var clientToken = "";
+                var clientToken = "sandbox_9dbg82cq_dcpspy2brwdjr3qn";
                 DropInRequest dropInRequest = new DropInRequest()
                         .ClientToken(clientToken);
                 StartActivityForResult(dropInRequest.GetIntent(this), REQUEST_CODE);
@@ -50,7 +50,7 @@ namespace BraintreeQs
                 }
                 else {
                     // handle errors here, an exception may be available in
-                    var error = (Exception)data.GetSerializableExtra(DropInActivity.EXTRA_ERROR);
+                    var error = (Exception)data.GetSerializableExtra(DropInActivity.ExtraError);
                 }
             }
         }

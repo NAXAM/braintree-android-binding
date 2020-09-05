@@ -38,24 +38,24 @@
 		{
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "three-d-secure",
-			"version" : "3.14.0",
-			"nugetVersion" : "3.14.0",
+			"version" : "3.11.1",
+			"nugetVersion" : "3.11.1",
 			"nugetId" : "Naxam.Braintree3DSecure.Droid",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.braintreepayments",
 			"artifactId" : "card-form",
-			"version" : "5.0.0",
-			"nugetVersion" : "5.0.0",
+			"version" : "4.3.0",
+			"nugetVersion" : "4.3.0",
 			"nugetId" : "Naxam.BrainTreeCardForm.Droid",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "braintree",
-			"version" : "3.14.0",
-			"nugetVersion" : "3.14.0",
+			"version" : "3.11.1",
+			"nugetVersion" : "3.11.1",
 			"nugetId" : "Naxam.Braintree.Droid",
 			"dependencyOnly" : false
 		},
@@ -70,32 +70,32 @@
 		{
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "core",
-			"version" : "3.14.0",
-			"nugetVersion" : "3.14.0",
+			"version" : "3.11.1",
+			"nugetVersion" : "3.11.1",
 			"nugetId" : "Naxam.BrainTree.Core",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.braintreepayments",
 			"artifactId" : "browser-switch",
-			"version" : "1.1.0",
-			"nugetVersion" : "1.1.0",
+			"version" : "0.2.0",
+			"nugetVersion" : "0.2.0",
 			"nugetId" : "Naxam.BrainTree.BrowserSwitch.Droid",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.paypal.android.sdk",
 			"artifactId" : "paypal-one-touch",
-			"version" : "3.14.0",
-			"nugetVersion" : "3.14.0",
+			"version" : "3.11.1",
+			"nugetVersion" : "3.11.1",
 			"nugetId" : "Naxam.Paypal.OneTouch",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.paypal.android.sdk",
 			"artifactId" : "data-collector",
-			"version" : "3.14.0",
-			"nugetVersion" : "3.14.0",
+			"version" : "3.11.1",
+			"nugetVersion" : "3.11.1",
 			"nugetId" : "Naxam.Paypal.DataCollector",
 			"dependencyOnly" : false
 		},
@@ -228,11 +228,27 @@
 			"dependencyOnly" : true
 		},
 		{
+			"groupId" : "androidx.recyclerview",
+			"artifactId" : "recyclerview",
+			"version" : "1.0.0",
+			"nugetVersion" : "1.0.0.1",
+			"nugetId" : "Xamarin.AndroidX.RecyclerView",
+			"dependencyOnly" : true
+		},
+		{
 			"groupId" : "com.google.android.material",
 			"artifactId" : "material",
 			"version" : "1.0.0",
 			"nugetVersion" : "1.0.0.1",
 			"nugetId" : "Xamarin.Google.Android.Material",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "io.card",
+			"artifactId" : "android-sdk",
+			"version" : "5.5.1",
+			"nugetVersion" : "5.5.1",
+			"nugetId" : "Xamarin.CardIO.Android",
 			"dependencyOnly" : true
 		}
 	]
