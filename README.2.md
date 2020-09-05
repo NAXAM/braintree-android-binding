@@ -25,11 +25,12 @@ Optional dotnet core tools:
 * cake
 
 To update all tools: 
-
+```
 	dotnet tool uninstall 	-g Cake.Tool
 	dotnet tool install 	-g Cake.Tool	
 	dotnet tool uninstall 	-g Xamarin.AndroidBinderator.Tool
 	dotnet tool install 	-g Xamarin.AndroidBinderator.Tool
+```
 
 The following targets can be specified:
 
@@ -90,3 +91,5 @@ sh ./build.sh --target=nuget && sh ./build.sh --target=samples && sh ./build.sh 
 
 Before the `.sln` files will compile in Visual Studio or Xamarin Studio, the external dependencies need to be downloaded.  This can be done by running the `build.sh` or `build.ps1` with the target `externals`.  After the externals are setup, the `.sln` files should compile in an IDE.
 
+### Issues
+- [CardinalMobileSDK issue](https://developers.braintreepayments.com/guides/3d-secure/client-side/android/v3)

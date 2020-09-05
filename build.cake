@@ -508,7 +508,7 @@ Task ("ci")
 	//.IsDependentOn ("inject-variables")
 	.IsDependentOn ("binderate")
 	.IsDependentOn ("nuget")
-	.IsDependentOn ("merge")
+	// .IsDependentOn ("merge")
 	.IsDependentOn ("samples");
 
 RunTarget (TARGET);

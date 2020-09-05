@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp">
+
+  <LinearLayout
+    android:id="@+id/action_buttons"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true">
+
+    <Button
+      android:id="@+id/add_payment_method"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/add_payment_method"
+            />
+
+    <Button
+      android:id="@+id/purchase"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/purchase"
+      android:onClick="purchase"
+      android:enabled="false"/>
+
+  </LinearLayout>
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_above="@id/action_buttons"
+    android:layout_marginBottom="16dp">
+
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingBottom="16dp">
+
+      <android.support.v7.widget.CardView
+        android:id="@+id/payment_method"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:foreground="@drawable/bt_payment_method_list_item_bg"
+        android:clickable="true"
+        android:onClick="launchDropIn"
+        android:visibility="gone"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="4dp"
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardUseCompatPadding="true">
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_margin="4dp">
+
+          <ImageView
+            android:id="@+id/payment_method_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            tools:ignore="ContentDescription" />
+
+          <TextView
+            android:id="@+id/payment_method_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/payment_method_icon"/>
+
+          <TextView
+            android:id="@+id/payment_method_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="12sp"
+            android:textColor="@color/bt_black_54"
+            android:layout_toRightOf="@id/payment_method_icon"
+            android:layout_below="@id/payment_method_title"/>
+
+        </RelativeLayout>
+
+      </android.support.v7.widget.CardView>
+
+      <TextView
+        android:id="@+id/nonce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+      <TextView
+        android:id="@+id/nonce_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+      <TextView
+        android:id="@+id/device_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+  </ScrollView>
+
+</RelativeLayout>

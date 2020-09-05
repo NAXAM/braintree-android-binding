@@ -1,17 +1,15 @@
 ﻿<Properties StartupConfiguration="{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}|Default">
-  <MonoDevelop.Ide.ItemProperties.BraintreeQs AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus_5X_API_29_x86" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.BraintreeQs AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.pixel_2_pie_9_0_-_api_28" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="BraintreeQs/MainActivity.cs">
     <Files>
-      <File FileName="../generated/com.braintreepayments.api.braintree/Naxam.Braintree.Droid.targets" Line="9" Column="1" />
-      <File FileName="BraintreeQs/MainActivity.cs" Line="13" Column="29" />
+      <File FileName="BraintreeQs/MainActivity.cs" Line="37" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="braintree-android" expanded="True" />
           <Node name="braintree-droid-samples" expanded="True">
             <Node name="BraintreeQs" expanded="True">
-              <Node name="MainActivity.cs" selected="True" />
+              <Node name="Packages" expanded="True" selected="True" />
             </Node>
           </Node>
         </State>

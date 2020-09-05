@@ -1,0 +1,53 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+  <!--<attr
+    path="/api/package[@name='com.google.protobuf']/class[@name='LazyStringArrayList']/method[@name='get' and count(parameter)=1 and parameter[1][@type='int']]"
+    name="managedName">GetString</attr>-->
+  <add-node path="/api/package[@name='com.braintreepayments.api.dropin.adapters']/class[@name='VaultedPaymentMethodsAdapter']">
+    <method abstract="false"
+            deprecated="not deprecated"
+            final="false"
+            name="onBindViewHolder"
+            native="false"
+            return="void"
+            static="false"
+            synchronized="false"
+            visibility="public">
+      <parameter name="holder"
+                 type="android.support.v7.widget.RecyclerView.ViewHolder">
+      </parameter>
+      <parameter name="position"
+                 type="int">
+      </parameter>
+
+    </method>
+  </add-node>
+
+  <add-node path="/api/package[@name='com.braintreepayments.api.dropin.adapters']/class[@name='VaultedPaymentMethodsAdapter']">
+    <method abstract="false"
+            deprecated="not deprecated"
+            final="false"
+            name="onCreateViewHolder"
+            native="false"
+            return="android.support.v7.widget.RecyclerView.ViewHolder"
+            static="false"
+            synchronized="false"
+            visibility="public">
+      <parameter name="parent"
+                 type="android.view.ViewGroup">
+      </parameter>
+      <parameter name="viewType"
+                 type="int">
+      </parameter>
+
+    </method>
+  </add-node>
+  
+  
+</metadata>

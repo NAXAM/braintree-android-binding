@@ -20,6 +20,14 @@
 	],
 	"artifacts" : [
 		{
+			"groupId" : "org.jfrog.cardinalcommerce.gradle",
+			"artifactId" : "cardinalmobilesdk",
+			"version" : "2.2.3-2",
+			"nugetVersion" : "2.2.3.2",
+			"nugetId" : "Naxam.CardinalMobileSDK.Droid",
+			"dependencyOnly" : true
+		},
+		{
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "drop-in",
 			"version" : "4.6.0",
@@ -30,24 +38,24 @@
 		{
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "three-d-secure",
-			"version" : "3.11.1",
-			"nugetVersion" : "3.11.1",
-			"nugetId" : "Naxam.BraintreeDropIn.Droid",
+			"version" : "3.14.0",
+			"nugetVersion" : "3.14.0",
+			"nugetId" : "Naxam.Braintree3DSecure.Droid",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.braintreepayments",
 			"artifactId" : "card-form",
-			"version" : "4.3.0",
-			"nugetVersion" : "4.3.0",
+			"version" : "5.0.0",
+			"nugetVersion" : "5.0.0",
 			"nugetId" : "Naxam.BrainTreeCardForm.Droid",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "braintree",
-			"version" : "3.11.1",
-			"nugetVersion" : "3.11.1",
+			"version" : "3.14.0",
+			"nugetVersion" : "3.14.0",
 			"nugetId" : "Naxam.Braintree.Droid",
 			"dependencyOnly" : false
 		},
@@ -62,32 +70,32 @@
 		{
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "core",
-			"version" : "3.11.1",
-			"nugetVersion" : "3.11.1",
+			"version" : "3.14.0",
+			"nugetVersion" : "3.14.0",
 			"nugetId" : "Naxam.BrainTree.Core",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.braintreepayments",
 			"artifactId" : "browser-switch",
-			"version" : "0.2.0",
-			"nugetVersion" : "0.2.0",
+			"version" : "1.1.0",
+			"nugetVersion" : "1.1.0",
 			"nugetId" : "Naxam.BrainTree.BrowserSwitch.Droid",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.paypal.android.sdk",
 			"artifactId" : "paypal-one-touch",
-			"version" : "3.11.1",
-			"nugetVersion" : "3.11.1",
+			"version" : "3.14.0",
+			"nugetVersion" : "3.14.0",
 			"nugetId" : "Naxam.Paypal.OneTouch",
 			"dependencyOnly" : false
 		},
 		{
 			"groupId" : "com.paypal.android.sdk",
 			"artifactId" : "data-collector",
-			"version" : "3.11.1",
-			"nugetVersion" : "3.11.1",
+			"version" : "3.14.0",
+			"nugetVersion" : "3.14.0",
 			"nugetId" : "Naxam.Paypal.DataCollector",
 			"dependencyOnly" : false
 		},
@@ -209,6 +217,14 @@
 			"version" : "1.1.0",
 			"nugetVersion" : "1.1.0.1",
 			"nugetId" : "Xamarin.AndroidX.Annotation",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "androidx.cardview",
+			"artifactId" : "cardview",
+			"version" : "1.0.0",
+			"nugetVersion" : "1.0.0.2",
+			"nugetId" : "Xamarin.AndroidX.Cardview",
 			"dependencyOnly" : true
 		},
 		{
