@@ -181,8 +181,9 @@
       <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" PrivateAssets="none" />
       }      
     }
-
-    @if (@Model.Name == "braintree") {
+    @if (@Model.Name == "braintree"
+    || @Model.Name=="google-payment"
+    ) {
       <PackageReference Include="Xamarin.GooglePlayServices.Wallet" Version="71.1600.1" PrivateAssets="none" />
     }
   </ItemGroup>
