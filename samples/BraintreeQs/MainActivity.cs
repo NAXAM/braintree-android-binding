@@ -8,6 +8,8 @@ using Android.Runtime;
 using Android.Content;
 using Com.Braintreepayments.Api.Dropin;
 using Java.Lang;
+using Com.Braintreepayments.Api;
+using Com.Braintreepayments.Browserswitch;
 
 namespace BraintreeQs
 {
@@ -44,11 +46,9 @@ namespace BraintreeQs
                 if (resultCode == Result.Ok) {
                     var result = data.GetParcelableExtra(DropInResult.ExtraDropInResult);
                     // use the result to update your UI and send the payment method nonce to your server
-                }
-                else if (resultCode == Result.Canceled) {
+                } else if (resultCode == Result.Canceled) {
                     // the user canceled
-                }
-                else {
+                } else {
                     // handle errors here, an exception may be available in
                     var error = (Exception)data.GetSerializableExtra(DropInActivity.ExtraError);
                 }

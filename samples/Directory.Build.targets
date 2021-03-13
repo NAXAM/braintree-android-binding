@@ -1,15 +1,15 @@
 <Project>
   <ItemGroup>
-    <PackageReference Update="Naxam.CardinalMobileSDK.Droid" Version="2.2.3.2" />
-    <PackageReference Update="Naxam.BraintreeDropIn.Droid" Version="4.6.0.1" />
-    <PackageReference Update="Naxam.Braintree3DSecure.Droid" Version="3.11.1" />
-    <PackageReference Update="Naxam.BrainTreeCardForm.Droid" Version="4.3.0" />
-    <PackageReference Update="Naxam.Braintree.Droid" Version="3.11.1.1" />
+    <PackageReference Update="Naxam.CardinalMobileSDK.Droid" Version="2.2.4.1" />
+    <PackageReference Update="Naxam.BraintreeDropIn.Droid" Version="5.2.0" />
+    <PackageReference Update="Naxam.Braintree3DSecure.Droid" Version="3.15.0" />
+    <PackageReference Update="Naxam.BrainTreeCardForm.Droid" Version="5.1.0" />
+    <PackageReference Update="Naxam.Braintree.Droid" Version="3.15.0" />
     <PackageReference Update="Naxam.BraintreeGooglePayment.Droid" Version="3.3.1.1" />
-    <PackageReference Update="Naxam.BrainTree.Core" Version="3.11.1" />
-    <PackageReference Update="Naxam.BrainTree.BrowserSwitch.Droid" Version="0.2.0" />
-    <PackageReference Update="Naxam.Paypal.OneTouch" Version="3.11.1" />
-    <PackageReference Update="Naxam.Paypal.DataCollector" Version="3.11.1" />
+    <PackageReference Update="Naxam.BrainTree.Core" Version="3.15.0" />
+    <PackageReference Update="Naxam.BrainTree.BrowserSwitch.Droid" Version="1.1.3" />
+    <PackageReference Update="Naxam.Paypal.OneTouch" Version="3.15.0" />
+    <PackageReference Update="Naxam.Paypal.DataCollector" Version="3.15.0" />
     <PackageReference Update="Xamarin.GooglePlayServices.Wallet" Version="71.1600.1" />
     <PackageReference Update="Xamarin.Android.Support.v4" Version="28.0.0.3" />
     <PackageReference Update="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
@@ -22,12 +22,12 @@
     <PackageReference Update="Xamarin.Android.Arch.Lifecycle.Runtime" Version="1.1.1.3" />
     <PackageReference Update="Xamarin.Google.AutoValue.Annotations" Version="1.6.5" />
     <PackageReference Update="Xamarin.Google.AutoValue.Annotations" Version="1.6.5" />
-    <PackageReference Update="Xamarin.AndroidX.AppCompat" Version="1.1.0.1" />
-    <PackageReference Update="Xamarin.AndroidX.Fragment" Version="1.1.0.1" />
-    <PackageReference Update="Xamarin.AndroidX.Annotation" Version="1.1.0.1" />
+    <PackageReference Update="Xamarin.AndroidX.AppCompat" Version="1.2.0.7" />
+    <PackageReference Update="Xamarin.AndroidX.Fragment" Version="1.3.0.1" />
+    <PackageReference Update="Xamarin.AndroidX.Annotation" Version="1.1.0.9" />
     <PackageReference Update="Xamarin.AndroidX.Cardview" Version="1.0.0.2" />
-    <PackageReference Update="Xamarin.AndroidX.RecyclerView" Version="1.0.0.1" />
-    <PackageReference Update="Xamarin.Google.Android.Material" Version="1.0.0.1" />
-    <PackageReference Update="Xamarin.CardIO.Android" Version="5.5.1" />
+    <PackageReference Update="Xamarin.AndroidX.RecyclerView" Version="1.1.0.8" />
+    <PackageReference Update="Xamarin.Google.Android.Material" Version="1.3.0.1" />
+    <PackageReference Update="Xamarin.Kotlin.StdLib" Version="1.4.10" />
   </ItemGroup>
 </Project>

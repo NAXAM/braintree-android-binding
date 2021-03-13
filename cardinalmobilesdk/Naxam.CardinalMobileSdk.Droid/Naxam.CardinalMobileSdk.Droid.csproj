@@ -14,7 +14,7 @@
     <AssemblyName>Naxam.CardinalMobileSdk.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <Deterministic>True</Deterministic>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
@@ -41,6 +41,7 @@
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -48,9 +49,7 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="..\..\source\org.jfrog.cardinalcommerce.gradle\cardinalmobilesdk\jars\cardinalmobilesdk-2.2.3-2.aar">
-      <Link>Jars\cardinalmobilesdk-2.2.3-2.aar</Link>
-    </LibraryProjectZip>
+    <LibraryProjectZip Include="Jars\cardinalmobilesdk.aar" />
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="..\..\source\org.jfrog.cardinalcommerce.gradle\cardinalmobilesdk\Transforms\Metadata.xml" />

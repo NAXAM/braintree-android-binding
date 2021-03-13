@@ -24,7 +24,7 @@ var MAX_CPU_COUNT = Argument("maxcpucount", 0);
 // Resolve Xamarin.Android installation
 var XAMARIN_ANDROID_PATH = EnvironmentVariable ("XAMARIN_ANDROID_PATH");
 var ANDROID_SDK_BASE_VERSION = "v1.0";
-var ANDROID_SDK_VERSION = "v9.0";
+var ANDROID_SDK_VERSION = "v10.0";
 string AndroidSdkBuildTools = $"29.0.2";
 
 if (string.IsNullOrEmpty(XAMARIN_ANDROID_PATH)) {
