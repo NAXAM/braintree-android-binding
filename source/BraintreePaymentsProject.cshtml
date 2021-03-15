@@ -167,6 +167,10 @@
   <ItemGroup>
     <!-- ProjectReference -->
     @foreach (var dep in @Model.NuGetDependencies) {
+      if (Model.Name == "braintree" && dep.MavenArtifact.MavenArtifactId == "google-payment") {
+        continue;
+      }
+
       if (dep.IsProjectReference) {
         <ProjectReference Include="..\..\generated\@(dep.MavenArtifact.MavenGroupId).@(dep.MavenArtifact.MavenArtifactId)\@(dep.MavenArtifact.MavenGroupId).@(dep.MavenArtifact.MavenArtifactId).csproj" PrivateAssets="none" />
       }
@@ -195,6 +199,14 @@
       <PackageReference Include="Xamarin.AndroidX.CardView" Version="1.0.0.2" PrivateAssets="none" />
       <PackageReference Include="Xamarin.AndroidX.RecyclerView" Version="1.1.0.8" PrivateAssets="none" />
       <PackageReference Include="Xamarin.Google.Android.Material" Version="1.3.0.1" PrivateAssets="none" />
+    }
+    @if (@Model.Name=="google-payment"
+    ) {
+      <ProjectReference Include="..\..\generated\com.braintreepayments.api.braintree\com.braintreepayments.api.braintree.csproj" PrivateAssets="none" />
+    }
+    @if (@Model.Name=="drop-in"
+    ) {
+      <ProjectReference Include="..\..\generated\com.braintreepayments.api.google-payment\com.braintreepayments.api.google-payment.csproj" PrivateAssets="none" />
     }
   </ItemGroup>
 

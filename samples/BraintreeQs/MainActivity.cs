@@ -39,6 +39,7 @@ namespace BraintreeQs
             };
 
             ThreeDSecureLookup x;
+            GooglePayment y;
         }
 
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data) {

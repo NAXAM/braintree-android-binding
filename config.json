@@ -31,7 +31,7 @@
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "drop-in",
 			"version" : "5.2.0",
-			"nugetVersion" : "5.2.0",
+			"nugetVersion" : "5.2.0.1",
 			"nugetId" : "Naxam.BraintreeDropIn.Droid",
 			"dependencyOnly" : false
 		},
@@ -39,7 +39,7 @@
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "three-d-secure",
 			"version" : "3.15.0",
-			"nugetVersion" : "3.15.0",
+			"nugetVersion" : "3.15.0.1",
 			"nugetId" : "Naxam.Braintree3DSecure.Droid",
 			"dependencyOnly" : false
 		},
@@ -47,7 +47,7 @@
 			"groupId" : "com.braintreepayments",
 			"artifactId" : "card-form",
 			"version" : "5.1.0",
-			"nugetVersion" : "5.1.0",
+			"nugetVersion" : "5.1.0.1",
 			"nugetId" : "Naxam.BrainTreeCardForm.Droid",
 			"dependencyOnly" : false
 		},
@@ -55,7 +55,7 @@
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "braintree",
 			"version" : "3.15.0",
-			"nugetVersion" : "3.15.0",
+			"nugetVersion" : "3.15.0.1",
 			"nugetId" : "Naxam.Braintree.Droid",
 			"dependencyOnly" : false
 		},
@@ -63,7 +63,7 @@
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "google-payment",
 			"version" : "3.3.1",
-			"nugetVersion" : "3.3.1.1",
+			"nugetVersion" : "3.3.1.2",
 			"nugetId" : "Naxam.BraintreeGooglePayment.Droid",
 			"dependencyOnly" : false
 		},
@@ -71,7 +71,7 @@
 			"groupId" : "com.braintreepayments.api",
 			"artifactId" : "core",
 			"version" : "3.15.0",
-			"nugetVersion" : "3.15.0",
+			"nugetVersion" : "3.15.0.1",
 			"nugetId" : "Naxam.BrainTree.Core",
 			"dependencyOnly" : false
 		},
@@ -79,7 +79,7 @@
 			"groupId" : "com.braintreepayments",
 			"artifactId" : "browser-switch",
 			"version" : "1.1.3",
-			"nugetVersion" : "1.1.3",
+			"nugetVersion" : "1.1.3.1",
 			"nugetId" : "Naxam.BrainTree.BrowserSwitch.Droid",
 			"dependencyOnly" : false
 		},
@@ -87,7 +87,7 @@
 			"groupId" : "com.paypal.android.sdk",
 			"artifactId" : "paypal-one-touch",
 			"version" : "3.15.0",
-			"nugetVersion" : "3.15.0",
+			"nugetVersion" : "3.15.0.1",
 			"nugetId" : "Naxam.Paypal.OneTouch",
 			"dependencyOnly" : false
 		},
@@ -95,7 +95,7 @@
 			"groupId" : "com.paypal.android.sdk",
 			"artifactId" : "data-collector",
 			"version" :  "3.15.0",
-			"nugetVersion" :  "3.15.0",
+			"nugetVersion" :  "3.15.0.1",
 			"nugetId" : "Naxam.Paypal.DataCollector",
 			"dependencyOnly" : false
 		},
