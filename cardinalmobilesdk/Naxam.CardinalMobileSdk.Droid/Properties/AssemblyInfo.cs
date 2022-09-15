@@ -7,11 +7,10 @@ using Android.App;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Naxam.CardinalMobileSdk.Droid")]
-[assembly: AssemblyDescription("Xamarin.Android binding librayr - CardinalMobileSdk")]
+[assembly: AssemblyDescription("Xamarin.Android binding library - CardinalMobileSdk")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("NAXAM COMPANY LIMITED")]
 [assembly: AssemblyProduct("X BINDINGS")]
-[assembly: AssemblyCopyright("Copyright © 2020 NAXAM COMPANY LIMITED")]
+[assembly: AssemblyCopyright("Copyright © 2022 tuyen-vuduc")]
 [assembly: AssemblyTrademark("NAXAM")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
@@ -22,5 +21,5 @@ using Android.App;
 //      Minor Version 
 //      Build Number
 //      Revision
-[assembly: AssemblyVersion("2.2.4.1")]
-[assembly: AssemblyFileVersion("2.2.4.1")]
+[assembly: AssemblyVersion("2.2.6.2")]
+[assembly: AssemblyFileVersion("2.2.6.2")]
