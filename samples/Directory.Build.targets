@@ -1,33 +1,28 @@
 <Project>
   <ItemGroup>
-    <PackageReference Update="Naxam.CardinalMobileSDK.Droid" Version="2.2.4.1" />
-    <PackageReference Update="Naxam.BraintreeDropIn.Droid" Version="5.2.0.1" />
-    <PackageReference Update="Naxam.Braintree3DSecure.Droid" Version="3.15.0.1" />
-    <PackageReference Update="Naxam.BrainTreeCardForm.Droid" Version="5.1.0.1" />
-    <PackageReference Update="Naxam.Braintree.Droid" Version="3.15.0.1" />
-    <PackageReference Update="Naxam.BraintreeGooglePayment.Droid" Version="3.3.1.2" />
-    <PackageReference Update="Naxam.BrainTree.Core" Version="3.15.0.1" />
-    <PackageReference Update="Naxam.BrainTree.BrowserSwitch.Droid" Version="1.1.3.1" />
-    <PackageReference Update="Naxam.Paypal.OneTouch" Version="3.15.0.1" />
-    <PackageReference Update="Naxam.Paypal.DataCollector" Version="3.15.0.1" />
-    <PackageReference Update="Xamarin.GooglePlayServices.Wallet" Version="71.1600.1" />
-    <PackageReference Update="Xamarin.Android.Support.v4" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.v7.RecyclerView" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Support.CustomTabs" Version="28.0.0.3" />
-    <PackageReference Update="Xamarin.Android.Arch.Core.Common" Version="1.1.1.3" />
-    <PackageReference Update="Xamarin.Android.Arch.Core.Runtime" Version="1.1.1.3" />
-    <PackageReference Update="Xamarin.Android.Arch.Lifecycle.Common" Version="1.1.1.3" />
-    <PackageReference Update="Xamarin.Android.Arch.Lifecycle.Runtime" Version="1.1.1.3" />
-    <PackageReference Update="Xamarin.Google.AutoValue.Annotations" Version="1.6.5" />
-    <PackageReference Update="Xamarin.Google.AutoValue.Annotations" Version="1.6.5" />
-    <PackageReference Update="Xamarin.AndroidX.AppCompat" Version="1.2.0.7" />
-    <PackageReference Update="Xamarin.AndroidX.Fragment" Version="1.3.0.1" />
-    <PackageReference Update="Xamarin.AndroidX.Annotation" Version="1.1.0.9" />
-    <PackageReference Update="Xamarin.AndroidX.Cardview" Version="1.0.0.2" />
-    <PackageReference Update="Xamarin.AndroidX.RecyclerView" Version="1.1.0.8" />
-    <PackageReference Update="Xamarin.Google.Android.Material" Version="1.3.0.1" />
-    <PackageReference Update="Xamarin.Kotlin.StdLib" Version="1.4.10" />
+    <PackageReference Update="CardinalCommerce.CardinalMobileSdk.Droid" Version="2.2.6.2" />
+    <PackageReference Update="BraintreePayments.API.DropIn.Droid" Version="6.3.0" />
+    <PackageReference Update="BraintreePayments.API.BraintreeCore.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.SharedUtils.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.Card.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.ThreeDSecure.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.Paypal.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.DataCollector.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.GooglePay.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.Venmo.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.UnionPay.Droid" Version="4.12.0" />
+    <PackageReference Update="BraintreePayments.API.BrowserSwitch.Droid" Version="2.1.1" />
+    <PackageReference Update="BraintreePayments.CardForm.Droid" Version="5.4.0" />
+    <PackageReference Update="Xamarin.AndroidX.Lifecycle.Runtime" Version="2.3.0.1" />
+    <PackageReference Update="Xamarin.AndroidX.AppCompat" Version="1.3.1.5" />
+    <PackageReference Update="Xamarin.AndroidX.Annotation" Version="1.2.0.3" />
+    <PackageReference Update="Xamarin.AndroidX.RecyclerView" Version="1.2.1.7" />
+    <PackageReference Update="Xamarin.AndroidX.Security.SecurityCrypto" Version="1.1.0-alpha03" />
+    <PackageReference Update="Xamarin.AndroidX.Room.Runtime" Version="2.2.6.1" />
+    <PackageReference Update="Xamarin.AndroidX.Work.Runtime" Version="2.7.0" />
+    <PackageReference Update="Xamarin.Android.Google.Android.Flexbox" Version="3.0.0.1" />
+    <PackageReference Update="Xamarin.Google.Android.Material" Version="1.0.0.1" />
+    <PackageReference Update="Xamarin.Kotlin.StdLib.Jdk8" Version="1.6.0.1" />
+    <PackageReference Update="Xamarin.GooglePlayServices.Wallet" Version="118.1.3.6" />
   </ItemGroup>
 </Project>

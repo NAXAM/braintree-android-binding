@@ -2,20 +2,20 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <!-- Required elements-->
-        <id>Naxam.CardinalMobileSdk.Droid</id>
+        <id>CardinalCommerce.CardinalMobileSdk.Droid</id>
         <version>2.2.6.2</version>
-        <authors>NAXAM</authors>
-        <owners>NAXAM COMPANY LIMITED</owners>
+        <authors>tuyen</authors>
+        <owners>tuyen</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <title>Naxam - CardinalMobileSdk Android</title>
+        <title>CardinalMobileSdk Android</title>
         <description>Xamarin Binding Library - CardinalMobileSdk Android</description>
         <iconUrl>https://cardinaldocs.atlassian.net/wiki/download/attachments/32771/atl.site.logo</iconUrl>
         <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
         <projectUrl>https://github.com/NAXAM/braintree-android-binding</projectUrl>
-        <copyright>Copyright (c) 2020-present NAXAM</copyright>
-        <tags>xamarin, Xamarin.Android, CardinalMobileSdk</tags>
+        <copyright>Copyright (c) 2022 tuyen-vuduc</copyright>
+        <tags>xamarin, Xamarin.Android, CardinalMobileSdk, CardinalCommerce</tags>
     </metadata>
     <files>
-        <file src="Naxam.CardinalMobileSdk.Droid/bin/Release/Naxam.CardinalMobileSdk.Droid.dll" target="lib/MonoAndroid10/Naxam.CardinalMobileSdk.Droid.dll" />
+        <file src="CardinalCommerce.CardinalMobileSdk.Droid/bin/Release/CardinalCommerce.CardinalMobileSdk.Droid.dll" target="lib/MonoAndroid10/CardinalCommerce.CardinalMobileSdk.Droid.dll" />
     </files>
 </package>

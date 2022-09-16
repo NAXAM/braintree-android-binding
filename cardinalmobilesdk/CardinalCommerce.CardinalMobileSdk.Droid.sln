@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.CardinalMobileSdk.Droid", "Naxam.CardinalMobileSdk.Droid.csproj", "{71A06546-83B1-428C-9BA1-0076EF01ADB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardinalCommerce.CardinalMobileSdk.Droid", "CardinalCommerce.CardinalMobileSdk.Droid\CardinalCommerce.CardinalMobileSdk.Droid.csproj", "{71A06546-83B1-428C-9BA1-0076EF01ADB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

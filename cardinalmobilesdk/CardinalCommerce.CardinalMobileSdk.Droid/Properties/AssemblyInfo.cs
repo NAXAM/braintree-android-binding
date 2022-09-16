@@ -11,7 +11,7 @@ using Android.App;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("X BINDINGS")]
 [assembly: AssemblyCopyright("Copyright © 2022 tuyen-vuduc")]
-[assembly: AssemblyTrademark("NAXAM")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 

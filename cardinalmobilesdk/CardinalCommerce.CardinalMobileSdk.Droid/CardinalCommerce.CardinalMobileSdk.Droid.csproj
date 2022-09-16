@@ -10,8 +10,8 @@
     <TemplateGuid>{77efb91c-a7e9-4b0e-a7c5-31eeec3c6d46}</TemplateGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Naxam.CardinalMobileSdk.Droid</RootNamespace>
-    <AssemblyName>Naxam.CardinalMobileSdk.Droid</AssemblyName>
+    <RootNamespace>CardinalCommerce.CardinalMobileSdk.Droid</RootNamespace>
+    <AssemblyName>CardinalCommerce.CardinalMobileSdk.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <Deterministic>True</Deterministic>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
