@@ -64,7 +64,7 @@ namespace DropInQs
                 Amount = "10.0"
             };
 
-            dropInClient = new DropInClient(this, "sandbox_9jsf4fq4_hrfdhh84ttwz3wy2");
+            dropInClient = new DropInClient(this, "sandbox_tmxhyf7d_dcpspy2brwdjr3qn");
             dropInClient.SetListener(this);
         }
 

@@ -1,24 +1,23 @@
 ﻿<Properties StartupConfiguration="{62C6253F-688F-49DA-B4F5-57B609FA4C6D}|Default">
-  <MonoDevelop.Ide.ItemProperties.DropInQs AndroidDesignerPreferredTheme="AppTheme" PreferredExecutionTarget="Android.Pixel_4_API_30" />
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.Pixel_4_API_30" />
+  <MonoDevelop.Ide.ItemProperties.DropInQs AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.29e45c6907047ece" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.29e45c6907047ece" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <Breakpoint file="/Volumes/ws/bindings/braintree-android-binding/samples/DropInQs/MainActivity.cs" relfile="DropInQs/MainActivity.cs" line="21" column="1" />
-    <Breakpoint file="/Volumes/ws/bindings/braintree-android-binding/samples/DropInQs/MainActivity.cs" relfile="DropInQs/MainActivity.cs" line="17" column="1" />
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.MonoDroid LastDeploySdkVersion="13.0.99.81" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="DropInQs/MainActivity.cs" Line="49" Column="10" />
-      <File FileName="DropInQs/Properties/AndroidManifest.xml" Line="15" Column="12" />
+      <File FileName="DropInQs/Properties/AndroidManifest.xml" Line="10" Column="12" />
+      <File FileName="DropInQs/MainActivity.cs" Line="73" Column="10" />
+      <File FileName="DropInQs/Resources/layout/content_main.xml" Line="51" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="braintree-droid-samples" expanded="True">
-            <Node name="DropInQs" expanded="True">
-              <Node name="Packages" expanded="True" />
+            <Node name="DropInQs" expanded="True" selected="True">
               <Node name="Properties" expanded="True" />
             </Node>
           </Node>
