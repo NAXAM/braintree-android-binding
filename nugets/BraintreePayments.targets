@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PackageReference Include="BraintreePayments.API.BrowserSwitch.Droid" Version="2.1.1" />
+    <PackageReference Include="BraintreePayments.API.Venmo.Droid" Version="4.12.0" />
+    <PackageReference Include="BraintreePayments.API.Paypal.Droid" Version="4.12.0" />
+    <PackageReference Include="BraintreePayments.CardForm.Droid" Version="5.4.0" />
+    <PackageReference Include="BraintreePayments.API.BraintreeCore.Droid" Version="4.12.0" />
+    <PackageReference Include="BraintreePayments.API.DataCollector.Droid" Version="4.12.0" />
+    <PackageReference Include="BraintreePayments.API.UnionPay.Droid" Version="4.12.0" />
+    <PackageReference Include="BraintreePayments.API.DropIn.Droid" Version="6.3.0" />
+    <PackageReference Include="BraintreePayments.API.Card.Droid" Version="4.12.0" />
+    <PackageReference Include="BraintreePayments.API.GooglePay.Droid" Version="4.12.0" />
+    <PackageReference Include="BraintreePayments.API.ThreeDSecure.Droid" Version="4.12.0" />
+    <PackageReference Include="BraintreePayments.API.SharedUtils.Droid" Version="4.12.0" />
+  </ItemGroup>
+</Project>

@@ -14,7 +14,46 @@ Install-Package BraintreePayments.API.DropIn.Droid
 
 This project is to provide C# libraries for corresponding libraries in Java/Kotlin, however, the APIs are exactly the same.
 
-Plz follow official guide from Braintree [here](https://developer.paypal.com/braintree/docs/start/hello-client).
+Here are snippets which could be found in [MainActivity](./samples/DropInQs/MainActivity.cs) in the demo project.
+### Set up
+```c#
+dropInRequest = new DropInRequest();
+dropInRequest.PayPalRequest = new PayPalVaultRequest();
+
+var googlePayRequest = new GooglePayRequest();
+googlePayRequest.TransactionInfo = TransactionInfo.NewBuilder()
+    .SetTotalPrice("10.0")
+    .SetTotalPriceStatus(WalletConstants.TotalPriceStatusFinal)
+    .SetCurrencyCode("USD")
+    .Build();
+googlePayRequest.BillingAddressRequired = true;
+dropInRequest.GooglePayRequest = googlePayRequest;
+
+dropInRequest.VenmoRequest = new VenmoRequest(VenmoPaymentMethodUsage.MultiUse);
+
+dropInRequest.ThreeDSecureRequest = new ThreeDSecureRequest
+{
+    Amount = "10.0"
+};
+
+dropInClient = new DropInClient(this, "sandbox_tmxhyf7d_dcpspy2brwdjr3qn");
+dropInClient.SetListener(this);
+```
+
+### Open it up
+
+```c#
+dropInClient.LaunchDropIn(dropInRequest);
+```
+
+
+Plz follow official guide from Braintree [here](https://developer.paypal.com/braintree/docs/start/hello-client) for further details.
+
+**Known issue**
+
+> AndroidManifest.xml is incorrectly configured or another app defines the same browser switch url as this app. See https://developers.braintreepayments.com/guides/client-sdk/android/#browser-switch for the correct configuration
+
+SOLUTION: Just remove special characters from your app's package name/id. like underscores and etc. ([source](https://www.appsloveworld.com/flutter/100/40/braintreebrowserswitchactivity-missing-incorrectly-configured-in-androidmanifest))
 
 ## Maintainer
 This project is maintained by [tuyen-vuduc](https://github.com/tuyen-vuduc) in his spare time and/or when requested.<br>

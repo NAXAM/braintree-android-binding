@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
+
+    <Button
+        android:id="@+id/btnOpenDropIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Open Drop-In"
+        android:onClick="openDropIn"/>
+
+    <TextView
+        android:id="@+id/lblVersion"
+        android:layout_above="@id/btnOpenDropIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="v6.3.0"
+        android:textSize="24sp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textFontWeight="500"
+        />
+    <TextView
+        android:id="@+id/lblTitle"
+        android:layout_above="@id/lblVersion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Braintree Drop-In Demo"
+        android:textSize="32sp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/holo_purple"
+        android:textFontWeight="700"
+        />
+    
+    <TextView
+        android:id="@+id/lblResult"
+        android:layout_below="@id/btnOpenDropIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result"
+        android:textSize="16sp"
+        android:gravity="center_horizontal"
+        android:layout_margin="32dp"
+        android:textColor="@android:color/holo_purple"
+        android:textFontWeight="700"
+        />
+</RelativeLayout>
+

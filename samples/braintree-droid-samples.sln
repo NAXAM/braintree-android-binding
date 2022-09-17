@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BraintreeQs", "BraintreeQs\BraintreeQs.csproj", "{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropInQs", "DropInQs\DropInQs.csproj", "{62C6253F-688F-49DA-B4F5-57B609FA4C6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +14,10 @@ Global
 		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62C6253F-688F-49DA-B4F5-57B609FA4C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C6253F-688F-49DA-B4F5-57B609FA4C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C6253F-688F-49DA-B4F5-57B609FA4C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C6253F-688F-49DA-B4F5-57B609FA4C6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -22,5 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2ABEC04D-55F0-451A-ACFD-F21F89115201}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$0.StandardHeader = $2
 	EndGlobalSection
 EndGlobal

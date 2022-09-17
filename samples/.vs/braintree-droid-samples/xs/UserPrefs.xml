@@ -1,24 +1,30 @@
-﻿<Properties StartupConfiguration="{9C0422DE-A64F-4AB7-B00D-61A5DA70869F}|Default">
-  <MonoDevelop.Ide.ItemProperties.BraintreeQs PreferredExecutionTarget="Android.pixel_2_pie_9_0_-_api_28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="BraintreeQs/MainActivity.cs">
+﻿<Properties StartupConfiguration="{62C6253F-688F-49DA-B4F5-57B609FA4C6D}|Default">
+  <MonoDevelop.Ide.ItemProperties.DropInQs AndroidDesignerPreferredTheme="AppTheme" PreferredExecutionTarget="Android.Pixel_4_API_30" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.Pixel_4_API_30" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <Breakpoint file="/Volumes/ws/bindings/braintree-android-binding/samples/DropInQs/MainActivity.cs" relfile="DropInQs/MainActivity.cs" line="21" column="1" />
+    <Breakpoint file="/Volumes/ws/bindings/braintree-android-binding/samples/DropInQs/MainActivity.cs" relfile="DropInQs/MainActivity.cs" line="17" column="1" />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="13.0.99.81" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="BraintreeQs/MainActivity.cs" Line="55" Column="14" />
-      <File FileName="BraintreeQs/Properties/AndroidManifest.xml" />
+      <File FileName="DropInQs/MainActivity.cs" Line="49" Column="10" />
+      <File FileName="DropInQs/Properties/AndroidManifest.xml" Line="15" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="braintree-droid-samples" expanded="True">
-            <Node name="BraintreeQs" expanded="True" />
+            <Node name="DropInQs" expanded="True">
+              <Node name="Packages" expanded="True" />
+              <Node name="Properties" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
 </Properties>
