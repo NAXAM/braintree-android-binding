@@ -1,49 +1,70 @@
-<img src="./art/repo_header.png" alt="BrainTree for Xamarin.Android" width="728" />
-
 # BrainTree for Xamarin.Android
 
-A Xamarin.Android binding library for [BrainTree Android](https://mvnrepository.com/artifact/com.braintreepayments.api/braintree) library.
+A Xamarin.Android binding library for [BrainTree DropIn Android](https://mvnrepository.com/artifact/com.braintreepayments.api/drop-in) library.
 
-## About
-This project is maintained by Naxam Co.,Ltd.<br>
-We specialize in developing mobile applications using Xamarin and native technology stack.<br>
-
-**Looking for developers for your project?**<br>
-
-<a href="mailto:tuyen@naxam.net"> 
-<img src="https://github.com/NAXAM/naxam.github.io/blob/master/assets/img/hire_button.png?raw=true" height="40"></a> <br>
+> The library used to be under the name of `Naxam.BraintreeDropIn.Droid`. Naxam is no longer in business for years hence I remove the trademark from the name and hope it more neutral for the community to contribute.
 
 ## Installation
 
 ```
-Install-Package Naxam.BrainTree.Droid
+Install-Package BraintreePayments.API.DropIn.Droid
 ```
 
 ## Usage
 
-This library is created to be a part of BraintreePayments libraries.
+This project is to provide C# libraries for corresponding libraries in Java/Kotlin, however, the APIs are exactly the same.
 
-Plz follow official guide from BraintreePayment [here](https://github.com/braintree/braintree_android/blob/master/README.md).
+Here are snippets which could be found in [MainActivity](./samples/DropInQs/MainActivity.cs) in the demo project.
+### Set up
+```c#
+dropInRequest = new DropInRequest();
+dropInRequest.PayPalRequest = new PayPalVaultRequest();
+
+var googlePayRequest = new GooglePayRequest();
+googlePayRequest.TransactionInfo = TransactionInfo.NewBuilder()
+    .SetTotalPrice("10.0")
+    .SetTotalPriceStatus(WalletConstants.TotalPriceStatusFinal)
+    .SetCurrencyCode("USD")
+    .Build();
+googlePayRequest.BillingAddressRequired = true;
+dropInRequest.GooglePayRequest = googlePayRequest;
+
+dropInRequest.VenmoRequest = new VenmoRequest(VenmoPaymentMethodUsage.MultiUse);
+
+dropInRequest.ThreeDSecureRequest = new ThreeDSecureRequest
+{
+    Amount = "10.0"
+};
+
+dropInClient = new DropInClient(this, "sandbox_tmxhyf7d_dcpspy2brwdjr3qn");
+dropInClient.SetListener(this);
+```
+
+### Open it up
+
+```c#
+dropInClient.LaunchDropIn(dropInRequest);
+```
+
+
+Plz follow official guide from Braintree [here](https://developer.paypal.com/braintree/docs/start/hello-client) for further details.
+
+**Known issue**
+
+> AndroidManifest.xml is incorrectly configured or another app defines the same browser switch url as this app. See https://developers.braintreepayments.com/guides/client-sdk/android/#browser-switch for the correct configuration
+
+SOLUTION: Just remove special characters from your app's package name/id. like underscores and etc. ([source](https://www.appsloveworld.com/flutter/100/40/braintreebrowserswitchactivity-missing-incorrectly-configured-in-androidmanifest))
+
+## Maintainer
+This project is maintained by [tuyen-vuduc](https://github.com/tuyen-vuduc) in his spare time and/or when requested.<br>
+
+If you find this project is useful, please become a sponsor of the project and/or buy him a coffee.
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/tuyen.vuduc)
 
 ## License
 
-BrainTree binding library for Android is released under the MIT license.
+Braintree native libraries and its dependencies are licensed under their original owners' licenses. Please check out their main website for further information.
+
+Braintree binding libraries for Android is released under the MIT license.
 See [LICENSE](./LICENSE) for details.
-
-# Get our showcases on AppStore/PlayStore
-Try our showcases to know more about our capabilities. 
-
-<a href="https://itunes.apple.com/us/developer/tuyen-vu/id1255432728/" > 
-<img src="https://github.com/NAXAM/imagepicker-android-binding/raw/master/art/apple_store.png" width="117" height="34"></a>
-
-<a href="https://play.google.com/store/apps/developer?id=NAXAM+CO.,+LTD" > 
-<img src="https://github.com/NAXAM/imagepicker-android-binding/raw/master/art/google_store.png" width="117" height="34"></a>
-
-Contact us if interested.
-
-<a href="mailto:tuyen@naxam.net"> 
-<img src="https://github.com/NAXAM/naxam.github.io/blob/master/assets/img/hire_button.png" height="34"></a> <br>
-<br>
-
-Follow us for the latest updates<br>[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=https://github.com/naxam/imagepicker-android-binding)
-[![Twitter Follow](https://img.shields.io/twitter/follow/naxamco.svg?style=social)](https://twitter.com/naxamco)

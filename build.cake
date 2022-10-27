@@ -1,9 +1,11 @@
 // Tools needed by cake addins
-#tool nuget:?package=vswhere&version=2.7.1
+#tool nuget:?package=vswhere&version=3.0.2
 
 // Cake Addins
-#addin nuget:?package=Cake.FileHelpers&version=3.2.1
-#addin nuget:?package=Newtonsoft.Json&version=11.0.2
+#addin nuget:?package=Cake.FileHelpers&version=5.0.0
+#addin nuget:?package=Newtonsoft.Json&version=13.0.1
+
+//using Cake.Common.Tools.MSBuild;
 
 using System;
 using System.Text.RegularExpressions;
@@ -21,11 +23,17 @@ var MAX_CPU_COUNT = Argument("maxcpucount", 0);
 // Master list of all the packages in the repo:
 // https://dl.google.com/dl/android/maven2/master-index.xml
 
+var REF_DOCS_URL = "https://bosstoragemirror.blob.core.windows.net/android-docs-scraper/a7/a712886a8b4ee709f32d51823223039883d38734/play-services-firebase.zip";
+var REF_METADATA_URL = "https://bosstoragemirror.blob.core.windows.net/android-docs-scraper/a7/a712886a8b4ee709f32d51823223039883d38734/play-services-firebase-metadata.xml";
+
+// These are a bunch of parameter names in the txt format which binding projects can use
+var REF_PARAMNAMES_URL = "https://bosstoragemirror.blob.core.windows.net/android-docs-scraper/a7/a712886a8b4ee709f32d51823223039883d38734/play-services-firebase-paramnames.txt";
+
 // Resolve Xamarin.Android installation
 var XAMARIN_ANDROID_PATH = EnvironmentVariable ("XAMARIN_ANDROID_PATH");
 var ANDROID_SDK_BASE_VERSION = "v1.0";
-var ANDROID_SDK_VERSION = "v10.0";
-string AndroidSdkBuildTools = $"29.0.2";
+var ANDROID_SDK_VERSION = "v12.0";
+string AndroidSdkBuildTools = $"32.0.0";
 
 if (string.IsNullOrEmpty(XAMARIN_ANDROID_PATH)) {
 	if (IsRunningOnWindows()) {
@@ -51,6 +59,12 @@ var REQUIRED_DOTNET_TOOLS = new [] {
 	"xamarin.androidx.migration.tool"
 };
 
+string nuget_version_template =
+							// "71.vvvv.0-preview3" 	// pre AndroidX version
+							"xx.yy.zz.ww-suffix"		// AndroidX version preview
+							//"1xx.yy.zz"				// AndroidX version stable/release
+							;
+string nuget_version_suffix = "";
 
 string[] Configs = new []
 {
@@ -59,7 +73,7 @@ string[] Configs = new []
 };
 
 var MONODROID_PATH = "/Library/Frameworks/Xamarin.Android.framework/Versions/Current/lib/mandroid/platforms/" + ANDROID_SDK_VERSION + "/";
-if (IsRunningOnWindows ()) 
+if (IsRunningOnWindows ())
 {
 	var vsInstallPath = VSWhereLatest (new VSWhereLatestSettings { Requires = "Component.Xamarin", IncludePrerelease = true });
 	MONODROID_PATH = vsInstallPath.Combine ("Common7/IDE/ReferenceAssemblies/Microsoft/Framework/MonoAndroid/" + ANDROID_SDK_VERSION).FullPath;
@@ -103,6 +117,52 @@ void RunProcess(FilePath fileName, string processArguments)
 		throw new Exception ($"Process {fileName} exited with code {exitCode}.");
 }
 
+void RunGradle(DirectoryPath root, string target)
+{
+    root = MakeAbsolute(root);
+    var proc = IsRunningOnWindows()
+        ? root.CombineWithFilePath("gradlew.bat").FullPath
+        : "bash";
+    var args = IsRunningOnWindows()
+        ? ""
+        : root.CombineWithFilePath("gradlew").FullPath;
+    args += $" {target} -p {root}";
+
+    var exitCode = StartProcess(proc, args);
+    if (exitCode != 0)
+        throw new Exception($"Gradle exited with code {exitCode}.");
+}
+
+Task("javadocs")
+	.Does(() =>
+{
+	EnsureDirectoryExists("./externals/");
+
+	if (!FileExists("./externals/docs.zip"))
+		DownloadFile(REF_DOCS_URL, "./externals/docs.zip");
+
+	if (!DirectoryExists("./externals/docs"))
+		Unzip ("./externals/docs.zip", "./externals/docs");
+
+	if (!FileExists("./externals/paramnames.txt"))
+		DownloadFile(REF_PARAMNAMES_URL, "./externals/paramnames.txt");
+
+	if (!FileExists("./externals/paramnames.xml"))
+		DownloadFile(REF_METADATA_URL, "./externals/paramnames.xml");
+
+	var astJar = new FilePath("./util/JavaASTParameterNames-1.0.jar");
+	var sourcesJars = GetFiles("./externals/**/*-sources.jar");
+
+	foreach (var srcJar in sourcesJars) {
+		var srcJarPath = MakeAbsolute(srcJar).FullPath;
+		var outTxtPath = srcJarPath.Replace("-sources.jar", "-paramnames.txt");
+		var outXmlPath = srcJarPath.Replace("-sources.jar", "-paramnames.xml");
+
+		StartProcess("java", "-jar \"" + MakeAbsolute(astJar).FullPath + "\" --text \"" + srcJarPath + "\" \"" + outTxtPath + "\"");
+		StartProcess("java", "-jar \"" + MakeAbsolute(astJar).FullPath + "\" --xml \"" + srcJarPath + "\" \"" + outXmlPath + "\"");
+	}
+});
+
 Task("tools-update")
     .Does
     (
@@ -115,6 +175,8 @@ Task("tools-update")
             dotnet tool install     -g xamarin.androidbinderator.tool
             dotnet tool uninstall   -g xamarin.androidx.migration.tool
             dotnet tool install     -g xamarin.androidx.migration.tool
+			dotnet tool uninstall   -g api-tools
+			dotnet tool install     -g api-tools
 
             StartProcess("dotnet", "tool uninstall   -g Cake.Tool");
             StartProcess("dotnet", "tool install     -g Cake.Tool");
@@ -127,6 +189,8 @@ Task("tools-update")
     );
 
 Task("binderate")
+	.IsDependentOn("javadocs")
+	.IsDependentOn("binderate-config-verify")
 	.Does(() =>
 {
 	var configFile = MakeAbsolute(new FilePath("./config.json")).FullPath;
@@ -135,64 +199,288 @@ Task("binderate")
 	RunProcess("xamarin-android-binderator",
 		$"--config=\"{configFile}\" --basepath=\"{basePath}\"");
 
-	// needed for offline builds 28.0.0.1 to 28.0.0.3
-	EnsureDirectoryExists("./externals/nuget-local-feed/");
-
-	FilePathCollection files = GetFiles("./samples/**/*.csproj");
-	foreach(FilePath file in files)
-	{
-		Information($"File: {file}");
-
-		XmlDocument xml = new XmlDocument();
-		xml.Load($"{file}");
-        XmlNamespaceManager mgr = new XmlNamespaceManager(xml.NameTable);
-        mgr.AddNamespace("x", xml.DocumentElement.NamespaceURI);
-	    // XmlNodeList list = xml.SelectNodes("/packages/package/");
-	    XmlNodeList list = xml.SelectNodes("//x:PackageReference[@Include]", mgr);	
-		Information($"{list.Count}");	
-		foreach (XmlNode xn in list)
-		{
-			string id = xn.Attributes["Include"].Value;  	// .Attributes["id"].Value; // attribute id packages.config
-			//string text = xn["Text"].InnerText; 			// Text Node
-			string v = xn.Attributes["Version"]?.Value; 	// attribute version 
-
-			Information($"		id	   : {id}");
-
-			if ( v is null)
-			{
-				v = xn.InnerText; //SelectSingleNode("Version", mgr).Value;
-			}
-			Information($"		version: {v}");
-
-			if ( id.Contains("Braintree") || id.Contains("PayPal") )
-			{
-				Information($"		skipping download of {id}");
-				continue;
-			}
-
-			string url = $"https://www.nuget.org/api/v2/package/{id}/{v}";
-			string file1 = $"./externals/nuget-local-feed/{id.ToLower()}.{v}.nupkg";
-			try
-			{
-				if ( ! FileExists(file1) )
-				{
-					Information($"		download of {id}");
-					DownloadFile(url, file1);
-				}
-			}
-			catch (System.Exception exc)
-			{
-				Error($"Unable to download: {url}");
-				Error($"             error: {exc.Message}");
-			}
-		}
-	}
+	RunTarget("binderate-prepare-dependencies-samples-packages-config");
+	RunTarget("binderate-prepare-dependencies-samples-packagereferences");
 });
 
-string nuget_version_template = "3.11.0";
-string nuget_version_suffix = "";
+Task("binderate-prepare-dependencies-samples-packagereferences")
+	.Does
+	(
+		() =>
+		{
+			// needed for offline builds 28.0.0.1 to 28.0.0.3
+			EnsureDirectoryExists("./output/");
+			EnsureDirectoryExists("./externals/");
+
+			FilePathCollection files = GetFiles("./samples/**/*.csproj");
+			foreach(FilePath file in files)
+			{
+				Information($"File: {file}");
+
+				XmlDocument xml = new XmlDocument();
+				xml.Load($"{file}");
+			}
+		}
+	);
+
+Task("binderate-prepare-dependencies-samples-packages-config")
+	.Does
+	(
+		() =>
+		{
+			// needed for offline builds 28.0.0.1 to 28.0.0.3
+			EnsureDirectoryExists("./output/");
+			EnsureDirectoryExists("./externals/");
+
+			FilePathCollection files = GetFiles("./samples/**/packages.config");
+			foreach(FilePath file in files)
+			{
+				Information($"File: {file}");
+
+				XmlDocument xml = new XmlDocument();
+				xml.Load($"{file}");
+				XmlNodeList list = xml.SelectNodes("/packages/package");
+				foreach (XmlNode xn in list)
+				{
+					string id = xn.Attributes["id"].Value; //Get attribute-id 
+					//string text = xn["Text"].InnerText; //Get Text Node
+					string v = xn.Attributes["version"].Value; //Get attribute-id 
+
+					Information($"		id	   : {id}");
+					Information($"		version: {v}");
+
+					string url = $"https://www.nuget.org/api/v2/package/{id}/{v}";
+					string file1 = $"./externals/{id.ToLower()}.{v}.nupkg";
+					try
+					{
+						if ( ! FileExists(file1) )
+						{
+							DownloadFile(url, file1);
+						}
+					}
+					catch (System.Exception)
+					{
+						Error($"Unable to download {url}");
+					}
+				}
+			}
+		
+			return;
+		}
+	);
+
 JArray binderator_json_array = null;
 
+Task("binderate-config-verify")
+	.IsDependentOn("binderate-fix")
+	.Does
+	(
+		() =>
+		{
+			using (StreamReader reader = System.IO.File.OpenText(@"./config.json"))
+			{
+				JsonTextReader jtr = new JsonTextReader(reader);
+				JArray ja = (JArray)JToken.ReadFrom(jtr);
+
+				Information("config.json");
+				//Information($"{ja}");
+				foreach(JObject jo in ja[0]["artifacts"])
+				{
+					bool? dependency_only = (bool?) jo["dependencyOnly"];
+					if ( dependency_only == true)
+					{
+						continue;
+					}
+					string version       = (string) jo["version"];
+					string nuget_version = (string) jo["nugetVersion"];
+					Information($"groupId       = {jo["groupId"]}");
+					Information($"artifactId    = {jo["artifactId"]}");
+					Information($"version       = {version}");
+					Information($"nuget_version = {nuget_version}");
+					Information($"nugetId       = {jo["nugetId"]}");
+
+					string[] version_parsed = nuget_version.Split(new string[] {"."}, StringSplitOptions.None);
+					string nuget_version_new = nuget_version_template;
+					string version_parsed_xx = version_parsed[0];
+					string version_parsed_yy = version_parsed[1];
+					string version_parsed_zz = version_parsed[2];
+
+					Information($"version_parsed_xx       = {version_parsed_xx}");
+					if ( version_parsed_xx.Length == 1 )
+					{
+						version_parsed_xx = string.Concat("0", version_parsed_xx);
+					}
+					Information($"version_parsed_xx       = {version_parsed_xx}");
+
+					nuget_version_new = nuget_version_new.Replace("xx", version_parsed_xx);
+					nuget_version_new = nuget_version_new.Replace("yy", version_parsed_yy);
+					nuget_version_new = nuget_version_new.Replace("zz", version_parsed_zz);
+					if (version_parsed.Length == 4)
+					{
+						nuget_version_new = nuget_version_new.Replace("ww", version_parsed[3]);
+					}
+					else
+					{
+						nuget_version_new = nuget_version_new.Replace(".ww", "");
+					}
+
+					nuget_version_new = nuget_version_new.Replace("-suffix", nuget_version_suffix);
+
+					Information($"nuget_version_new       = {nuget_version_new}");
+					Information($"nuget_version           = {nuget_version}");
+					if( ! nuget_version_new.Contains($"{nuget_version}") )
+					{
+						// AndroidX version
+						// // pre AndroidX version
+						Error("check config.json for nuget id - pre AndroidX version");
+						Error  ($"		groupId       = {jo["groupId"]}");
+						Error  ($"		artifactId    = {jo["artifactId"]}");
+						Error  ($"		version       = {version}");
+						Error  ($"		nuget_version = {nuget_version}");
+						Error  ($"		nugetId       = {jo["nugetId"]}");
+
+						Warning($"	expected : ");
+						Warning($"		nuget_version = {nuget_version_new}");
+						throw new Exception("check config.json for nuget id");
+
+						return;
+					}
+				}
+			}
+		}
+	);
+
+Task("binderate-diff")
+	.IsDependentOn("binderate")
+    .Does
+    (
+        () =>
+        {
+			EnsureDirectoryExists("./output/");
+
+			// "git diff master:config.json config.json" > ./output/config.json.diff-from-master.txt"
+			string process = "git";
+			string process_args = "diff master:config.json config.json";
+			IEnumerable<string> redirectedStandardOutput;
+			ProcessSettings process_settings = new ProcessSettings ()
+			{
+             Arguments = process_args,
+             RedirectStandardOutput = true
+         	};
+			int exitCodeWithoutArguments = StartProcess(process, process_settings, out redirectedStandardOutput);
+			System.IO.File.WriteAllLines("./output/config.json.diff-from-master.txt", redirectedStandardOutput.ToArray());
+			Information("Exit code: {0}", exitCodeWithoutArguments);
+		}
+	);
+
+Task("binderate-fix")
+    .Does
+    (
+        () =>
+        {
+            using (StreamReader reader = System.IO.File.OpenText(@"./config.json"))
+            {
+                JsonTextReader jtr = new JsonTextReader(reader);
+                binderator_json_array = (JArray)JToken.ReadFrom(jtr);
+            }
+
+            Warning("config.json fixing missing folder strucutre ...");
+            foreach(JObject jo in binderator_json_array[0]["artifacts"])
+            {
+                string groupId      = (string) jo["groupId"];
+                string artifactId   = (string) jo["artifactId"];
+
+                Information($"		Verifying files for     :");
+                Information($"              group       : {groupId}");
+                Information($"              artifact    : {artifactId}");
+
+                bool? dependency_only = (bool?) jo["dependencyOnly"];
+                if ( dependency_only == true)
+                {
+                    continue;
+                }
+
+
+                string dir_group = $"source/{groupId}";
+                if ( ! DirectoryExists(dir_group) )
+                {
+                    Warning($"  		Creating {dir_group}");
+                    CreateDirectory(dir_group);
+                }
+
+                string dir_artifact = $"{dir_group}/{artifactId}";
+                if ( ! DirectoryExists(dir_artifact) )
+                {
+                    Warning($"     			Creating artifact folder : {dir_artifact}");
+                    CreateDirectory(dir_artifact);
+                    CreateDirectory($"{dir_artifact}/Transforms/");
+                    CreateDirectory($"{dir_artifact}/Additions/");
+                }
+				else
+				{
+					continue;
+				}
+
+				if ( ! FileExists($"{dir_artifact}/Transforms/Metadata.xml"))
+				{
+					Warning($"     				Creating file : {dir_artifact}/Metadata.xml");
+					CopyFile
+					(
+						$"./source/template-group-id/template-artifact/Transforms/Metadata.xml",
+						$"{dir_artifact}/Transforms/Metadata.xml"
+					);
+				}
+				if ( ! FileExists($"{dir_artifact}/Transforms/Metadata.Namespaces.xml"))
+				{
+					Warning($"     				Creating file : {dir_artifact}/Metadata.Namespaces.xml");
+					CopyFile
+					(
+						$"./source/template-group-id/template-artifact/Transforms/Metadata.Namespaces.xml",
+						$"{dir_artifact}/Transforms/Metadata.Namespaces.xml"
+					);
+				}
+				if ( ! FileExists($"{dir_artifact}/Transforms/Metadata.ParameterNames.xml"))
+				{
+					Warning($"     				Creating file : {dir_artifact}/Metadata.ParameterNames.xml");
+					CopyFile
+					(
+						$"./source/template-group-id/template-artifact/Transforms/Metadata.ParameterNames.xml",
+						$"{dir_artifact}/Transforms/Metadata.ParameterNames.xml"
+					);
+				}
+				if ( ! FileExists($"{dir_artifact}/Transforms/EnumFields.xml"))
+				{
+					Warning($"     				Creating file : {dir_artifact}/EnumFields.xml");
+					CopyFile
+					(
+						$"./source/template-group-id/template-artifact/Transforms/EnumFields.xml",
+						$"{dir_artifact}/Transforms/EnumFields.xml"
+					);
+				}
+				if ( ! FileExists($"{dir_artifact}/Transforms/EnumMethods.xml"))
+				{
+					Warning($"     				Creating file : {dir_artifact}/EnumMethods.xml");
+					CopyFile
+					(
+						$"./source/template-group-id/template-artifact/Transforms/EnumMethods.xml",
+						$"{dir_artifact}/Transforms/EnumMethods.xml"
+					);
+				}
+
+				if ( ! FileExists($"{dir_artifact}/Additions/Additions.cs"))
+				{
+					Warning($"     				Creating file : {dir_artifact}/Additions/Additions.cs");
+					CopyFile
+					(
+						$"./source/template-group-id/template-artifact/Additions/Additions.cs",
+						$"{dir_artifact}/Additions/Additions.cs"
+					);
+				}
+            }
+
+            return;
+        }
+    );
 
 Task("mergetargets")
 	.Does(() =>
@@ -230,28 +518,51 @@ Task("mergetargets")
 	******************************/
 });
 
-
-Task("libs")
-	.IsDependentOn("nuget-restore")
+Task("libs-native")
 	.Does(() =>
 {
-	NuGetRestore("./generated/braintree-android.sln", new NuGetRestoreSettings { });
+	// string root = "./source/com.google.android.play/core.extensions/";
 
+	// RunGradle(root, "build");
+
+	// string outputDir = "./externals/com.xamarin.google.android.play.core.extensions/";
+	// EnsureDirectoryExists(outputDir);
+	// CleanDirectories(outputDir);
+
+	// CopyFileToDirectory($"{root}/extensions-aar/build/outputs/aar/extensions-aar-release.aar", outputDir);
+	// Unzip($"{outputDir}/extensions-aar-release.aar", outputDir);
+	// MoveFile($"{outputDir}/classes.jar", $"{outputDir}/extensions.jar");
+});
+
+
+Task("libs")
+	.IsDependentOn("libs-native")
+	.Does(() =>
+{
 	Configs = new string[] { "Release" };
 
 	foreach(string config in Configs)
 	{
-		MSBuild("./generated/braintree-android.sln", c => {
-			c.Configuration = config;
-			c.MaxCpuCount = MAX_CPU_COUNT;
-			c.BinaryLogger = new MSBuildBinaryLogSettings { Enabled = true, FileName = MakeAbsolute(new FilePath("./output/libs.binlog")).FullPath };
-			c.Properties.Add("DesignTimeBuild", new [] { "false" });
-			c.Properties.Add("AndroidSdkBuildToolsVersion", new [] { AndroidSdkBuildTools });
-			if (! string.IsNullOrEmpty(ANDROID_HOME))
-			{
-				c.Properties.Add("AndroidSdkDirectory", new [] { $"{ANDROID_HOME}" } );
-			}
+		var settings = new DotNetMSBuildSettings()
+							.SetConfiguration(config)
+							.SetMaxCpuCount(MAX_CPU_COUNT)
+							.EnableBinaryLogger("./output/libs.binlog")
+							.WithProperty("NodeReuse", "false");
+
+		settings.Properties.Add("DesignTimeBuild", new [] { "false" });
+		settings.Properties.Add("AndroidSdkBuildToolsVersion", new [] { AndroidSdkBuildTools });
+		
+		if (!string.IsNullOrEmpty(ANDROID_HOME))
+		{
+			settings.Properties.Add("AndroidSdkDirectory", new [] { $"{ANDROID_HOME}" } );
+		}
+
+		DotNetRestore("./generated/braintree-android.sln", new DotNetRestoreSettings
+		{ 
+			MSBuildSettings = settings.EnableBinaryLogger("./output/restore.binlog")
 		});
+		
+		DotNetMSBuild("./generated/braintree-android.sln", settings);
 	}
 });
 
@@ -315,43 +626,72 @@ Task("samples")
 	.IsDependentOn("samples-directory-build-targets")
 	.IsDependentOn("mergetargets")
 	.IsDependentOn("allbindingprojectrefs")
-	.Does(() =>
-{
-	Configs = new string[] { "Debug", "Release" };
-
-	DeleteDirectories(GetDirectories("./samples/**/bin/"), new DeleteDirectorySettings() { Force = true, Recursive = true });
-	DeleteDirectories(GetDirectories("./samples/**/obj/"), new DeleteDirectorySettings() { Force = true, Recursive = true });
-
-	
-	var sampleSlns = GetFiles("./samples/**/*.sln");
-
-	foreach(string config in Configs)
+	.Does
+(
+	() =>
 	{
-		foreach (var sampleSln in sampleSlns) 
+		Configs = new string[] { "Debug", "Release" };
+
+		DeleteDirectories(GetDirectories("./samples/**/bin/"), new DeleteDirectorySettings() { Force = true, Recursive = true });
+		DeleteDirectories(GetDirectories("./samples/**/obj/"), new DeleteDirectorySettings() { Force = true, Recursive = true });
+
+		EnsureDirectoryExists($@"./output/failed/");
+
+		var sampleSlns = GetFiles("./samples/**/*.sln");
+
+		foreach(string config in Configs)
 		{
-			string filename_sln = sampleSln.GetFilenameWithoutExtension().ToString();
-
-			if ( ! filename_sln.Contains("BuildAll") )
+			foreach (var sampleSln in sampleSlns)
 			{
-				NuGetRestore(sampleSln, new NuGetRestoreSettings { }); // R8 errors
-			}
-			Information($"Solution: {filename_sln}");
-			MSBuild(sampleSln, c => {
-				c.Configuration = config;
-				c.Properties.Add("DesignTimeBuild", new [] { "false" });
-				c.BinaryLogger = new MSBuildBinaryLogSettings
-				{
-					Enabled = true,
-					FileName = MakeAbsolute(new FilePath($"./output/{filename_sln}.sample.binlog")).FullPath
-				};
-				if (! string.IsNullOrEmpty(ANDROID_HOME))
-				{
-					c.Properties.Add("AndroidSdkDirectory", new [] { $"{ANDROID_HOME}" } );
-				}
-			});
-		}
-	}
+				string filename_sln = sampleSln.GetFilenameWithoutExtension().ToString();
 
+				if ( ! filename_sln.Contains("BuildAll") )
+				{
+					NuGetRestore(sampleSln, new NuGetRestoreSettings { }); // R8 errors
+				}
+				
+				Information($"Solution: {filename_sln}");
+				string bl = MakeAbsolute(new FilePath($"./output/{filename_sln}{config}.sample.binlog")).FullPath;
+				try
+				{
+					MSBuild
+						(
+							sampleSln,
+							c =>
+							{
+								c.Configuration = config;
+								c.Properties.Add("DesignTimeBuild", new [] { "false" });
+								c.BinaryLogger = new MSBuildBinaryLogSettings
+														{
+															Enabled = true,
+															FileName = bl
+														};
+								if (! string.IsNullOrEmpty(ANDROID_HOME))
+								{
+									c.Properties.Add("AndroidSdkDirectory", new [] { $"{ANDROID_HOME}" } );
+								}
+							}
+						);
+				}
+				catch (Exception exc)
+				{
+					Error($"Error: 	{exc}");
+					Error($"   bl:	{bl}");
+					Error($"   bl:	{bl.Replace($@"output", $@"output/failed")}");
+					if ( FileExists(bl) )
+					{
+						DeleteFile(bl);
+					}
+					MoveFile(bl, bl.Replace($@"output", $@"output/failed"));
+				}
+			}
+		}
+
+		DeleteFiles(".output/system.*/nupkg");
+		DeleteFiles(".output/microsoft.*/nupkg");
+		DeleteFiles(".output/xamarin.android.support.*/nupkg");
+		DeleteFiles(".output/xamarin.android.arch.*/nupkg");
+		DeleteFiles(".output/xamarin.build.download.*/nupkg");
 });
 
 Task("allbindingprojectrefs")
@@ -372,13 +712,7 @@ Task("allbindingprojectrefs")
 
 	};
 
-	generateTargets("./output/Naxam.*.nupkg", "./output/BraintreePackages.targets");
-});
-
-Task("nuget-restore")
-	.Does(() =>
-{
-	NuGetRestore("./generated/braintree-android.sln", new NuGetRestoreSettings { });
+	generateTargets("./output/BraintreePayments.*.nupkg", "./output/BraintreePayments.targets");
 });
 
 
@@ -388,25 +722,32 @@ Task("nuget")
 {
 	var outputPath = new DirectoryPath("./output");
 
-	MSBuild ("./generated/braintree-android.sln", c => {
-		c.Configuration = "Release";
-		c.MaxCpuCount = MAX_CPU_COUNT;
-		c.BinaryLogger = new MSBuildBinaryLogSettings { Enabled = true, FileName = MakeAbsolute(new FilePath("./output/nuget.binlog")).FullPath };
-		c.Targets.Clear();
-		c.Targets.Add("Pack");
-		c.Properties.Add("PackageOutputPath", new [] { MakeAbsolute(outputPath).FullPath });
-		c.Properties.Add("PackageRequireLicenseAcceptance", new [] { "true" });
-		c.Properties.Add("DesignTimeBuild", new [] { "false" });
-		c.Properties.Add("AndroidSdkBuildToolsVersion", new [] { $"{AndroidSdkBuildTools}" });
-    });
+	var settings = new DotNetMSBuildSettings()
+		.SetConfiguration("Release")
+		.SetMaxCpuCount(MAX_CPU_COUNT)
+		.EnableBinaryLogger ("./output/nuget.binlog");
+	settings.Targets.Clear();
+	settings.Targets.Add("Pack");
+	settings.Properties.Add("PackageOutputPath", new [] { MakeAbsolute(outputPath).FullPath });
+	settings.Properties.Add("PackageRequireLicenseAcceptance", new [] { "true" });
+	settings.Properties.Add("DesignTimeBuild", new [] { "false" });
+	settings.Properties.Add("AndroidSdkBuildToolsVersion", new [] { $"{AndroidSdkBuildTools}" });
+
+	if (! string.IsNullOrEmpty(ANDROID_HOME))
+	{
+		settings.Properties.Add("AndroidSdkDirectory", new[] { $"{ANDROID_HOME}" });
+	}
+
+	DotNetMSBuild ("./generated/braintree-android.sln", settings);
 });
 
 Task ("merge")
 	.IsDependentOn ("libs")
 	.Does (() =>
 {
-	var allDlls = 
-		GetFiles ($"./generated/*/bin/Release/monoandroid*/Naxam.*.dll");
+	var allDlls =
+		GetFiles ($"./generated/*/bin/Release/monoandroid*/BraintreePayments.*.dll") +
+		GetFiles ($"./generated/*/bin/Release/monoandroid*/BraintreePayments.API.*.dll");
 	var mergeDlls = allDlls
 		.GroupBy(d => new FileInfo(d.FullPath).Name)
 		.Select(g => g.FirstOrDefault())
@@ -432,6 +773,15 @@ Task ("ci-setup")
 	ReplaceTextInFiles(glob, "{BUILD_NUMBER}", BUILD_NUMBER);
 	ReplaceTextInFiles(glob, "{BUILD_TIMESTAMP}", BUILD_TIMESTAMP);
 });
+
+Task("nuget-dependecies")
+	.Does
+	(
+		() =>
+		{
+			string icanhasdotnet = "https://icanhasdot.net/Downloads/ICanHasDotnetCore.zip";
+		}
+	);
 
 // Task ("genapi")
 // 	.IsDependentOn ("libs")
@@ -504,11 +854,11 @@ Task ("clean")
 
 Task ("ci")
 	.IsDependentOn ("ci-setup")
-	//.IsDependentOn ("check-tools")
+	//.IsDependentOn ("tools-check")
 	//.IsDependentOn ("inject-variables")
 	.IsDependentOn ("binderate")
 	.IsDependentOn ("nuget")
-	// .IsDependentOn ("merge")
+	//.IsDependentOn ("merge")
 	.IsDependentOn ("samples");
 
 RunTarget (TARGET);

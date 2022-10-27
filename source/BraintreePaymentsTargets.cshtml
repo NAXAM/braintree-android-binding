@@ -1,9 +1,6 @@
 ﻿﻿@using System.Linq
 @using System.IO
 @using System.Xml.Linq
-@{
-  var targetFrameworkMoniker = "MonoAndroid90";
-}
 <?xml version="1.0" encoding="utf-8"?>
 @functions {
   public static void RemoveXmlns(XElement e)
@@ -19,11 +16,15 @@
   }
 }
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AndroidManifestMerger>manifestmerger.jar</AndroidManifestMerger>
+  </PropertyGroup>  
+  
   @if (@Model.MavenArtifacts.Count > 0) {
   <ItemGroup>
     @foreach (var art in @Model.MavenArtifacts) {
       if (art.ProguardFile != null) {
-    <ProguardConfiguration Include="$(MSBuildThisFileDirectory)..\..\proguard\@(targetFrameworkMoniker)\proguard.txt" />
+    <ProguardConfiguration Include="$(MSBuildThisFileDirectory)..\..\proguard\proguard.txt" />
       }
     }
   </ItemGroup>
@@ -32,7 +33,15 @@
   </PropertyGroup>
   }
 
+  <PropertyGroup>
+    <AndroidManifestMerger>manifestmerger.jar</AndroidManifestMerger>
+  </PropertyGroup>  
+  <PropertyGroup>
+    <AndroidFragmentType>AndroidX.Fragment.App.Fragment</AndroidFragmentType>
+  </PropertyGroup>
+
   @foreach (var art in @Model.MavenArtifacts) {
+      if (art.MavenArtifactPackaging == "aar") {
         var friendlyArtifactId = art.MavenArtifactId.Replace("-", "");
         var friendlyVersion = art.MavenArtifactVersion.Replace(".", "_").Replace("-", "_");
         var friendlyId = friendlyArtifactId + "_" + friendlyVersion;
@@ -56,19 +65,10 @@
 
 
     <ItemGroup>
-        @*
-        <!--
-        NOTE: 
-        Xamarin.Build.Download version set in GooglePlaySericesProjects.cshtml template is 
-        important for attributes in GooglePlaySericesTargets.cshtml template
-        
-        XamarinBuildDownloadAndroidAarLibrary   v >=  0.10.0
-        XamarinBuildDownloadRestoreAssemblyAar  v <   0.10.0
-        -->
-        *@
-      <XamarinBuildDownloadRestoreAssemblyAar Include="$(XamarinBuildDownloadDir)@(xbdAarPath)" />
+      <XamarinBuildDownloadAndroidAarLibrary Include="$(XamarinBuildDownloadDir)@(xbdAarPath)" />
     </ItemGroup>
   </Target>
+      }
     }
 
 @{
