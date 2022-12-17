@@ -9,7 +9,7 @@ TestResults/
 .vscode/
 .vs/
 tools/
-# nugets/
+*.nupkg
 
 # globs
 Makefile.in

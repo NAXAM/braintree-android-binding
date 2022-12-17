@@ -720,7 +720,7 @@ Task("nuget")
 	.IsDependentOn("libs")
 	.Does(() =>
 {
-	var outputPath = new DirectoryPath("./output");
+	var outputPath = new DirectoryPath("./nugets");
 
 	var settings = new DotNetMSBuildSettings()
 		.SetConfiguration("Release")
