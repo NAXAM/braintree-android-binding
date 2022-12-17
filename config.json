@@ -24,88 +24,88 @@
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "drop-in",
-				"version": "6.3.0",
-				"nugetVersion": "6.3.0",
+				"version": "6.5.1",
+				"nugetVersion": "6.5.1",
 				"nugetId": "BraintreePayments.API.DropIn.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "braintree-core",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.BraintreeCore.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "shared-utils",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.SharedUtils.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "card",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.Card.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "three-d-secure",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.ThreeDSecure.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "paypal",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.Paypal.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "data-collector",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.DataCollector.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "google-pay",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.GooglePay.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "venmo",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.Venmo.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "union-pay",
-				"version": "4.12.0",
-				"nugetVersion": "4.12.0",
+				"version": "4.20.0",
+				"nugetVersion": "4.20.0",
 				"nugetId": "BraintreePayments.API.UnionPay.Droid",
 				"dependencyOnly": false
 			},
 			{
 				"groupId": "com.braintreepayments.api",
 				"artifactId": "browser-switch",
-				"version": "2.1.1",
-				"nugetVersion": "2.1.1",
+				"version": "2.3.1",
+				"nugetVersion": "2.3.1",
 				"nugetId": "BraintreePayments.API.BrowserSwitch.Droid",
 				"dependencyOnly": false
 			},
@@ -240,16 +240,16 @@
 			{
 				"groupId": "org.jfrog.cardinalcommerce.gradle",
 				"artifactId": "cardinalmobilesdk",
-				"version": "2.2.6-2",
-				"nugetVersion": "2.2.6.2",
+				"version": "2.2.7-2",
+				"nugetVersion": "2.2.7.2",
 				"nugetId": "CardinalCommerce.CardinalMobileSdk.Droid",
 				"dependencyOnly": true
 			},
 			{
 				"groupId": "com.google.android.gms",
 				"artifactId": "play-services-wallet",
-				"version": "18.1.3",
-				"nugetVersion": "118.1.3.6",
+				"version": "19.1.0",
+				"nugetVersion": "119.1.0.2",
 				"nugetId": "Xamarin.GooglePlayServices.Wallet",
 				"dependencyOnly": true
 			}
