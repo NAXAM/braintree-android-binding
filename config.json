@@ -1,0 +1,24 @@
+[
+	{
+		"mavenRepositoryType": "MavenCentral",
+		"slnFile": "generated/braintree-android.sln",
+		"debug": {
+			"DumpModels": true
+		},
+		"additionalProjects": [],
+		"templates": [
+			{
+				"templateFile": "source/Targets.cshtml",
+				"outputFileRule": "generated/{groupid}.{artifactid}/{nugetid}.targets"
+			},
+			{
+				"templateFile": "source/Project.cshtml",
+				"outputFileRule": "generated/{groupid}.{artifactid}/{groupid}.{artifactid}.csproj"
+			},
+			{
+				"templateFile": "source/Pom.cshtml",
+				"outputFileRule": "generated/{groupid}.{artifactid}/pom.xml"
+			}
+		]
+	}
+]

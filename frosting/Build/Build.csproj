@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Cake.Frosting" Version="3.0.0" />
+    <PackageReference Include="Gradle.DependencyResolver" Version="0.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <GradleDependencyResolverImplementation Include="com.mapbox.maps:android:10.9.1"></GradleDependencyResolverImplementation>
+    <GradleDependencyResolverRepository Include="https://api.mapbox.com/downloads/v2/releases/maven">
+      <Repository>
+        maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                // Do not change the username below.
+                // This should always be `mapbox` (not your username).
+                username = "mapbox"
+                // Use the secret token you stored in gradle.properties as the password
+                password = MAPBOX_DOWNLOADS_TOKEN
+            }
+        }
+      </Repository>
+    </GradleDependencyResolverRepository>
+  </ItemGroup>  
+  <ItemGroup>
+    <None Remove="Tasks\" />
+    <None Remove="Core\" />
+    <None Remove="Xamarin.AndroidBinderator" />
+    <None Remove="Gradle.DependencyResolver" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tasks\" />
+    <Folder Include="Core\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gradle.Binderator\Gradle.Binderator.csproj" />
+  </ItemGroup>
+  <PropertyGroup>
+    <AndroidSdkDirectory Condition=" '$(OS)' == 'Unix' ">$(Home)/Library/Android/sdk</AndroidSdkDirectory>
+    <AndroidSdkDirectory Condition=" '$(OS)' != 'Unix' ">$(UserProfile)/Library/Android/sdk</AndroidSdkDirectory>
+  </PropertyGroup>  
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <LangVersion>latestmajor</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>latestmajor</LangVersion>
+  </PropertyGroup>
+  <Target Name="_GradleDependencyResolverTrigger" DependsOnTargets="_GradleDependencyResolver" BeforeTargets="CoreCompile" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="None" ResourceNamePolicy="FileFormatDefault" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>
