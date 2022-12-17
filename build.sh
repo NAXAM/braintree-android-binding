@@ -2,4 +2,4 @@ dotnet pack -c Release -o nugets cardinalmobilesdk/CardinalCommerce.CardinalMobi
 
 dotnet nuget locals -c all
 
-dotnet cake --target=nuget
+dotnet cake -- "$@"

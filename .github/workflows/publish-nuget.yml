@@ -33,7 +33,7 @@ jobs:
 
     - name: Build
       run: |
-        sh build.sh
+        sh build.sh --target=ci
   
     - name: Publish with Dotnet CLI
       env:

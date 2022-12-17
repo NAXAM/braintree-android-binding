@@ -138,29 +138,29 @@ Task("javadocs")
 {
 	EnsureDirectoryExists("./externals/");
 
-	if (!FileExists("./externals/docs.zip"))
-		DownloadFile(REF_DOCS_URL, "./externals/docs.zip");
+	// if (!FileExists("./externals/docs.zip"))
+	// 	DownloadFile(REF_DOCS_URL, "./externals/docs.zip");
 
-	if (!DirectoryExists("./externals/docs"))
-		Unzip ("./externals/docs.zip", "./externals/docs");
+	// if (!DirectoryExists("./externals/docs"))
+	// 	Unzip ("./externals/docs.zip", "./externals/docs");
 
-	if (!FileExists("./externals/paramnames.txt"))
-		DownloadFile(REF_PARAMNAMES_URL, "./externals/paramnames.txt");
+	// if (!FileExists("./externals/paramnames.txt"))
+	// 	DownloadFile(REF_PARAMNAMES_URL, "./externals/paramnames.txt");
 
-	if (!FileExists("./externals/paramnames.xml"))
-		DownloadFile(REF_METADATA_URL, "./externals/paramnames.xml");
+	// if (!FileExists("./externals/paramnames.xml"))
+	// 	DownloadFile(REF_METADATA_URL, "./externals/paramnames.xml");
 
-	var astJar = new FilePath("./util/JavaASTParameterNames-1.0.jar");
-	var sourcesJars = GetFiles("./externals/**/*-sources.jar");
+	// var astJar = new FilePath("./util/JavaASTParameterNames-1.0.jar");
+	// var sourcesJars = GetFiles("./externals/**/*-sources.jar");
 
-	foreach (var srcJar in sourcesJars) {
-		var srcJarPath = MakeAbsolute(srcJar).FullPath;
-		var outTxtPath = srcJarPath.Replace("-sources.jar", "-paramnames.txt");
-		var outXmlPath = srcJarPath.Replace("-sources.jar", "-paramnames.xml");
+	// foreach (var srcJar in sourcesJars) {
+	// 	var srcJarPath = MakeAbsolute(srcJar).FullPath;
+	// 	var outTxtPath = srcJarPath.Replace("-sources.jar", "-paramnames.txt");
+	// 	var outXmlPath = srcJarPath.Replace("-sources.jar", "-paramnames.xml");
 
-		StartProcess("java", "-jar \"" + MakeAbsolute(astJar).FullPath + "\" --text \"" + srcJarPath + "\" \"" + outTxtPath + "\"");
-		StartProcess("java", "-jar \"" + MakeAbsolute(astJar).FullPath + "\" --xml \"" + srcJarPath + "\" \"" + outXmlPath + "\"");
-	}
+	// 	StartProcess("java", "-jar \"" + MakeAbsolute(astJar).FullPath + "\" --text \"" + srcJarPath + "\" \"" + outTxtPath + "\"");
+	// 	StartProcess("java", "-jar \"" + MakeAbsolute(astJar).FullPath + "\" --xml \"" + srcJarPath + "\" \"" + outXmlPath + "\"");
+	// }
 });
 
 Task("tools-update")
